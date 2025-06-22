@@ -12,4 +12,4 @@ sys.path.insert(0, '/home/mosud/dev/miocode/miocode_bootcamp')
 
 from app import app as application
 
-s
+
