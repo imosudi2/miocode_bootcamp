@@ -6,7 +6,9 @@ app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
 # Replace this with your actual reCAPTCHA secret key from Google
-RECAPTCHA_SECRET_KEY = 'YOUR_SECRET_KEY_HERE'
+RECAPTCHA_SECRET_KEY = "6LeFlWkrAAAAAC2DmNRzjQqD_9hJ3Y4s84SYHRkF"; RECAPTCHA_SITE_KEY ="6LeFlWkrAAAAAGWAysVIcK9ZhvksD--q_hNW1BrO"
+
+app.jinja_env.globals.update( recaptcha_site_key=RECAPTCHA_SITE_KEY)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
