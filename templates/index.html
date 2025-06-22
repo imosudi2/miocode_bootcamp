@@ -245,22 +245,23 @@
     </div>
   </section>
 
-<section class="scroll-reveal">
-  <div class="registration-form" id="register">
+<section id="register" class="scroll-reveal">
+  <div class="registration-form">
     <h2 class="section-title">Join Our Bootcamp</h2>
     <p class="text-center mb-4" style="max-width: 700px; margin: 0 auto; color: var(--gray-medium);">
-      <h4>Start your tech career journey with MioCode. Fill out this form to apply for our next cohort.</h4>
+      <strong>Start your tech career journey with MioCode. Fill out this form to apply for our next cohort.</strong>
     </p>
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        <div class="alert alert-success">{{ messages[0] }}</div>
-      {% endif %}
-    {% endwith %}
+
+    <!-- Bootstrap Progress Bar -->
+    <div class="progress mb-4" style="height: 8px;">
+      <div class="progress-bar bg-primary" role="progressbar" style="width: 0%;" id="formProgressBar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
 
     <form id="studentRegistration" class="needs-validation" novalidate>
-      <!-- Personal Information -->
-      <fieldset class="border p-3 mb-4">
-        <legend class="w-auto px-2">Personal Information</legend>
+
+      <!-- Personal Info -->
+      <fieldset class="form-fieldset">
+        <legend>Personal Information</legend>
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="firstName" class="form-label">First Name*</label>
@@ -291,7 +292,7 @@
           <div class="col-md-6 mb-3">
             <label for="contactMethod" class="form-label">Preferred Contact Method*</label>
             <select class="form-select" id="contactMethod" name="contactMethod" required>
-              <option value="" selected disabled>Select method</option>
+              <option value="" disabled selected>Select method</option>
               <option value="email">Email</option>
               <option value="whatsapp">WhatsApp</option>
               <option value="phone">Phone Call</option>
@@ -305,13 +306,14 @@
         </div>
       </fieldset>
 
-      <!-- Program Selection -->
-      <fieldset class="border p-3 mb-4">
-        <legend class="w-auto px-2">Program Details</legend>
+      <!-- Program Info -->
+      <fieldset class="form-fieldset">
+        <legend>Program Details</legend>
+
         <div class="mb-3">
           <label for="program" class="form-label">Select Program*</label>
           <select class="form-select" id="program" name="program" required>
-            <option value="" selected disabled>Choose a program</option>
+            <option value="" disabled selected>Choose a program</option>
             <option value="system-admin">System Administration</option>
             <option value="software-dev">Software Development</option>
             <option value="cloud-computing">Cloud & Edge Computing</option>
@@ -322,30 +324,31 @@
         <label class="form-label d-block">Preferred Schedule*</label>
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="radio" name="schedule" id="fullTime" value="full-time" required>
-          <label class="form-check-label" for="fullTime">Full-time (9am-5pm, Mon-Fri)</label>
+          <label class="form-check-label" for="fullTime">Full-time (9am–5pm)</label>
         </div>
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="radio" name="schedule" id="partTime" value="part-time">
-          <label class="form-check-label" for="partTime">Part-time (6pm-9pm, Mon/Wed/Fri)</label>
+          <label class="form-check-label" for="partTime">Part-time (6pm–9pm)</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline mb-3">
           <input class="form-check-input" type="radio" name="schedule" id="weekend" value="weekend">
-          <label class="form-check-label" for="weekend">Weekend (10am-4pm, Sat/Sun)</label>
+          <label class="form-check-label" for="weekend">Weekend (10am–4pm)</label>
         </div>
 
-        <div class="mt-3">
+        <div>
           <label for="startDate" class="form-label">Preferred Start Date*</label>
           <input type="date" class="form-control" id="startDate" name="startDate" required>
         </div>
       </fieldset>
 
       <!-- Background Info -->
-      <fieldset class="border p-3 mb-4">
-        <legend class="w-auto px-2">Background Information</legend>
+      <fieldset class="form-fieldset">
+        <legend>Background Information</legend>
+
         <div class="mb-3">
           <label for="education" class="form-label">Highest Education Level</label>
           <select class="form-select" id="education" name="education">
-            <option value="" selected disabled>Select education level</option>
+            <option value="" disabled selected>Select level</option>
             <option value="high-school">High School</option>
             <option value="college">College</option>
             <option value="phd">PhD</option>
@@ -356,10 +359,10 @@
         <div class="mb-3">
           <label for="experience" class="form-label">Technical Experience Level*</label>
           <select class="form-select" id="experience" name="experience" required>
-            <option value="" selected disabled>Select your experience level</option>
-            <option value="beginner">Beginner (0-1 year)</option>
-            <option value="intermediate">Intermediate (1-3 years)</option>
-            <option value="advanced">Advanced (3+ years)</option>
+            <option value="" disabled selected>Select experience</option>
+            <option value="beginner">Beginner (0–1 yr)</option>
+            <option value="intermediate">Intermediate (1–3 yrs)</option>
+            <option value="advanced">Advanced (3+ yrs)</option>
           </select>
         </div>
 
@@ -370,39 +373,39 @@
       </fieldset>
 
       <!-- Payment -->
-      <fieldset class="border p-3 mb-4">
-        <legend class="w-auto px-2">Payment Options</legend>
-        <div class="mb-3">
-          <label class="form-label">Payment Plan*</label>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="payment" id="fullPayment" value="full" required>
-            <label class="form-check-label" for="fullPayment">Full Payment (5% discount)</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="payment" id="installment" value="installment">
-            <label class="form-check-label" for="installment">Installment Plan (3 monthly payments)</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="payment" id="scholarship" value="scholarship">
-            <label class="form-check-label" for="scholarship">Apply for Scholarship</label>
-          </div>
+      <fieldset class="form-fieldset">
+        <legend>Payment Options</legend>
+
+        <label class="form-label">Payment Plan*</label>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" id="fullPayment" name="payment" value="full" required>
+          <label class="form-check-label" for="fullPayment">Full Payment (5% discount)</label>
+        </div>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" id="installment" name="payment" value="installment">
+          <label class="form-check-label" for="installment">Installment Plan (3 payments)</label>
         </div>
 
-        <div class="form-check mb-3">
+        <div class="form-check mt-3">
           <input class="form-check-input" type="checkbox" id="agreeTerms" name="agreeTerms" required>
           <label class="form-check-label" for="agreeTerms">I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">terms and conditions</a>*</label>
         </div>
       </fieldset>
 
-      <!-- reCAPTCHA v3 - Hidden input for token -->
+      <!-- Hidden reCAPTCHA token -->
       <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
-      
+
       <div class="text-center mt-4">
-        <button type="submit" class="cta-button" id="submitButton">Submit Application</button>
+        <button type="submit" class="cta-button" id="submitButton" disabled>
+	  Submit Application
+	  <span class="spinner-border spinner-border-sm text-light d-none" id="loadingSpinner" role="status" aria-hidden="true"></span>
+	</button>
+
       </div>
     </form>
   </div>
 </section>
+
 
 <!-- Terms and Conditions Modal -->
 <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
@@ -462,6 +465,16 @@
     </ul>
   </div>
 </footer>
+
+<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center p-4">
+      <h5 class="modal-title mb-3" id="confirmationTitle">Application Submitted!</h5>
+      <p class="mb-4">Thank you for applying to MioCode. We'll be in touch shortly.</p>
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
