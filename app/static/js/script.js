@@ -136,7 +136,7 @@ function enableSubmit(response) {
 document.addEventListener("DOMContentLoaded", function () {
   grecaptcha.ready(function () {
     grecaptcha.render('submitButton', {
-      sitekey: '6LeFlWkrAAAAAGWAysVIcK9ZhvksD--q_hNW1BrO',
+      sitekey: '{{recaptcha_site_key}}',//'6LeFlWkrAAAAAGWAysVIcK9ZhvksD--q_hNW1BrO',
       callback: 'onSubmit',
       size: 'invisible'
     });
