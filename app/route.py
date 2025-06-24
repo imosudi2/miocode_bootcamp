@@ -3,15 +3,10 @@ import os
 import requests
 from datetime import date
 
-app = Flask(__name__)
-app.secret_key = os.urandom(24)
 
-# Replace with your actual reCAPTCHA keys
-RECAPTCHA_SECRET_KEY = "6LeFlWkrAAAAAC2DmNRzjQqD_9hJ3Y4s84SYHRkF"
-RECAPTCHA_SITE_KEY = "6LeFlWkrAAAAAGWAysVIcK9ZhvksD--q_hNW1BrO"
+from . import app
+from .logic import verify_recaptcha
 
-# Make reCAPTCHA site key available in templates
-app.jinja_env.globals.update(recaptcha_site_key=RECAPTCHA_SITE_KEY)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -55,25 +50,4 @@ def index():
     return render_template('index.html', today=date.today())
 
 
-def verify_recaptcha(token):
-    """Verify the reCAPTCHA v2 token with Google."""
-    if not token:
-        return False
-
-    url = 'https://www.google.com/recaptcha/api/siteverify'
-    payload = {
-        'secret': RECAPTCHA_SECRET_KEY,
-        'response': token
-    }
-
-    try:
-        response = requests.post(url, data=payload)
-        result = response.json()
-        return result.get('success', False)
-    except Exception as e:
-        print("reCAPTCHA error:", e)
-        return False
-
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
 
