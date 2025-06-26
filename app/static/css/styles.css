@@ -245,6 +245,23 @@
         border-bottom: 3px solid #667eea;
         display: inline-block;
     }
+    .section-header-success {
+        color: #495057;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid #12b10c;
+        display: inline-block;
+    }
+
+    .section-header-prog {
+        color: #495057;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid #8d0686;
+        display: inline-block;
+    }
     .form-check-input:checked {
         background-color: #667eea;
         border-color: #667eea;
