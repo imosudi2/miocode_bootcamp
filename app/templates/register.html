@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="apple-touch-icon" sizes="57x57" href="{{ url_for('static', filename='images/favicon/apple-icon-57x57.png') }}">
+  <link rel="apple-touch-icon" sizes="60x60" href="{{ url_for('static', filename='images/favicon/apple-icon-60x60.png') }}">
+  <link rel="apple-touch-icon" sizes="72x72" href="{{ url_for('static', filename='images/favicon/apple-icon-72x72.png') }}">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ url_for('static', filename='images/favicon/apple-icon-76x76.png') }}">
+  <link rel="apple-touch-icon" sizes="114x114" href="{{ url_for('static', filename='images/favicon/apple-icon-114x114.png') }}">
+  <link rel="apple-touch-icon" sizes="120x120" href="{{ url_for('static', filename='images/favicon/apple-icon-120x120.png') }}">
+  <link rel="apple-touch-icon" sizes="144x144" href="{{ url_for('static', filename='images/favicon/apple-icon-144x144.png') }}">
+  <link rel="apple-touch-icon" sizes="152x152" href="{{ url_for('static', filename='images/favicon/apple-icon-152x152.png') }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='images/favicon/apple-icon-180x180.png') }}">
+  <link rel="icon" type="image/png" sizes="192x192"  href="{{ url_for('static', filename='images/favicon/android-icon-192x192.png') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/favicon/favicon-32x32.png') }}">
+  <link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='images/favicon/favicon-96x96.png') }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/favicon/favicon-16x16.png') }}">
+  <link rel="manifest" href="{{ url_for('static', filename='images/favicon/manifest.json') }}">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="{{ url_for('static', filename='images/favicon/ms-icon-144x144.png') }}">
+  <link rel="manifest" href="{{ url_for('static', filename='images/favicon/manifest.json') }}">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="{{ url_for('static', filename='images/favicon/ms-icon-144x144.png') }}">
+  <meta name="theme-color" content="#ffffff">
+  <title>MioCode Bootcamp - Transform Your Tech Career</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="gradient-bg">
+
+    <nav id="navbar">
+        <div class="nav-container">
+          <a href="#home" class="logo">
+            <svg width="160" height="40" viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoTitle">
+              <title id="logoTitle">MioCode Logo</title>
+              <text x="0" y="28" font-family="Inter, sans-serif" font-weight="800" font-size="24" fill="#0ea5e9">mioC</text>
+              <text x="65" y="28" font-family="JetBrains Mono, monospace" font-size="20" fill="#64748b">ø</text>
+              <text x="78" y="28" font-family="Inter, sans-serif" font-weight="800" font-size="24" fill="#64748b">&lt;le</text>
+            </svg>
+          </a>
+          <ul class="nav-links">
+            <li><a href="#home"><i class="bi bi-house-door-fill"></i>Home</a></li>
+            <li><a href="#about"><i class="bi bi-info-circle-fill"></i>About</a></li>
+            <li><a href="#courses"><i class="bi bi-book-fill"></i>Courses</a></li>
+            <li><a href="#skills"><i class="bi bi-tools"></i>Skills</a></li>
+            <li><a href="#contact"><i class="bi bi-envelope-fill"></i>Contact</a></li>
+          </ul>
+        </div>
+    </nav>
+    
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+          <h1>MioCode Bootcamp</h1>
+          <p class="subtitle">Transform Your Tech Career</p>
+          <p class="tagline">Master Cloud Computing • Edge Technologies • Python Development</p>
+          <a href="#courses" class="cta-button">Start Your Journey</a>
+        </div>
+    </section>
+
+    <section id="about" class="scroll-reveal">
+        <div class="about">
+        <h2 class="section-title">About Us</h2>
+        <div class="quote">
+            For the things we have to learn before we can do them, we learn by doing them.
+            <br><strong>— Aristotle</strong>
+        </div>
+        <p>Just as buildings need strong foundations, enterprise business needs IT infrastructure that will enable applications to scale and perform. Our comprehensive bootcamp prepares you for the future of technology with hands-on experience in system administration, cloud computing, and modern web development.</p>
+        </div>
+    </section>
+
+    <section id="courses" class="scroll-reveal">
+        <h2 class="section-title">Our Programs</h2>
+        <div class="cards-grid">
+        <div class="card">
+            <h3>🖥️ System Administration</h3>
+            <ul>
+            <li>Introduction to Operating Systems</li>
+            <li>Linux Installation (Desktop and Server)</li>
+            <li>Advanced Linux Commands</li>
+            <li>Linux Networking and Firewall</li>
+            <li>System Management & Monitoring</li>
+            <li>Open Source Server Suites</li>
+            <li>Virtualization & Containers</li>
+            </ul>
+        </div>
+
+        <div class="card" id="skills">
+            <h3>💻 Software Development</h3>
+            <ul>
+            <li>HTML5, Bootstrap, JavaScript ES6+</li>
+            <li>Advanced Linux Commands</li>
+            <li>Version Control with Git</li>
+            <li>Python & Flask Framework</li>
+            <li>Bootstrap 5 & Modern CSS</li>
+            <li>Database Management</li>
+            <li>Web App Development & Deployment</li>
+            <li>API Design & Integration</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>☁️ Cloud & Edge Computing</h3>
+            <ul>
+            <li>Cloud Platform Fundamentals</li>
+            <li>Docker & Kubernetes</li>
+            <li>Edge Computing Architecture</li>
+            <li>Microservices Design</li>
+            <li>CI/CD Pipeline Setup</li>
+            <li>Infrastructure as Code</li>
+            <li>Monitoring & Observability</li>
+            <li>Security Best Practices</li>
+            </ul>
+        </div>
+        </div>
+    </section>
+
+    <section class="scroll-reveal">
+        <div class="capstone">
+        <h2>🚀 Capstone Project</h2>
+        <p>Build and deploy a comprehensive, database-driven web application that demonstrates your technical abilities and readiness for real-world development environments. Your bootcamp journey culminates with this full-stack project where you'll design, develop, and deploy an application that showcases all the skills you've mastered.</p>
+        </div>
+    </section>
+
+    <section class="scroll-reveal">
+        <div class="technologies">
+          <h2>Technologies You'll Master</h2>
+          <div class="tech-grid">
+    
+            <div class="tech-item">
+              <div class="tech-icon">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="15" y="15" width="70" height="70" rx="5" fill="#000"/>
+                  <circle cx="35" cy="35" r="8" fill="#FFD43B"/>
+                  <rect x="45" y="45" width="25" height="4" fill="#FFD43B"/>
+                  <rect x="45" y="52" width="20" height="4" fill="#FFD43B"/>
+                  <rect x="45" y="59" width="30" height="4" fill="#FFD43B"/>
+                  <text x="50" y="80" text-anchor="middle" fill="#FFD43B" font-size="8">GNU/Linux</text>
+                </svg>
+              </div>
+              <div class="tech-name">GNU/Linux</div>
+              <div class="tech-description">Open-source operating system mastery</div>
+            </div>
+    
+            <div class="tech-item">
+              <div class="tech-icon">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <ellipse cx="30" cy="50" rx="15" ry="25" fill="#3776AB"/>
+                  <ellipse cx="70" cy="50" rx="15" ry="25" fill="#FFD43B"/>
+                  <circle cx="35" cy="40" r="3" fill="white"/>
+                  <circle cx="65" cy="60" r="3" fill="white"/>
+                </svg>
+              </div>
+              <div class="tech-name">Python</div>
+              <div class="tech-description">Powerful programming language for web development</div>
+            </div>
+    
+            <div class="tech-item">
+              <div class="tech-icon">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="15" y="25" width="70" height="50" rx="5" fill="#000"/>
+                  <text x="50" y="50" text-anchor="middle" fill="#00D26A" font-size="12" font-weight="bold">BASH</text>
+                  <text x="50" y="62" text-anchor="middle" fill="#00D26A" font-size="6">$</text>
+                </svg>
+              </div>
+              <div class="tech-name">Bash</div>
+              <div class="tech-description">Command line scripting and automation</div>
+            </div>
+    
+            <div class="tech-item">
+              <div class="tech-icon">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 20 L80 20 L80 80 L20 80 Z" fill="#000"/>
+                  <path d="M25 25 L75 25 L75 75 L25 75 Z" fill="#fff"/>
+                  <rect x="30" y="30" width="40" height="4" fill="#000"/>
+                  <rect x="30" y="38" width="35" height="3" fill="#000"/>
+                  <rect x="30" y="44" width="30" height="3" fill="#000"/>
+                  <text x="50" y="65" text-anchor="middle" fill="#000" font-size="8">Flask</text>
+                </svg>
+              </div>
+              <div class="tech-name">Python Flask</div>
+              <div class="tech-description">Micro web framework for rapid development</div>
+            </div>
+    
+            <div class="tech-item">
+              <div class="tech-icon">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="20" y="20" width="60" height="60" rx="8" fill="#F05032"/>
+                  <path d="M35 35 L65 35 L60 65 L40 65 Z" fill="white"/>
+                  <text x="50" y="55" text-anchor="middle" fill="#F05032" font-size="12" font-weight="bold">git</text>
+                </svg>
+              </div>
+              <div class="tech-name">Git</div>
+              <div class="tech-description">Version control and collaborative development</div>
+            </div>
+    
+            <div class="tech-item">
+              <div class="tech-icon">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="20" y="30" width="60" height="40" rx="5" fill="#0DB7ED"/>
+                  <rect x="25" y="35" width="15" height="10" fill="white"/>
+                  <rect x="25" y="48" width="15" height="10" fill="white"/>
+                  <rect x="42" y="35" width="15" height="10" fill="white"/>
+                  <rect x="42" y="48" width="15" height="10" fill="white"/>
+                  <rect x="59" y="35" width="15" height="10" fill="white"/>
+                  <rect x="59" y="48" width="15" height="10" fill="white"/>
+                </svg>
+              </div>
+              <div class="tech-name">Docker</div>
+              <div class="tech-description">Containerization and deployment platform</div>
+            </div>
+    
+            <div class="tech-item">
+              <div class="tech-icon">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="15" y="25" width="70" height="50" rx="8" fill="#7952B3"/>
+                  <text x="50" y="50" text-anchor="middle" fill="white" font-size="12" font-weight="bold">B</text>
+                  <text x="50" y="62" text-anchor="middle" fill="white" font-size="8">Bootstrap</text>
+                </svg>
+              </div>
+              <div class="tech-name">Bootstrap</div>
+              <div class="tech-description">Responsive CSS framework for modern UIs</div>
+            </div>
+    
+            <div class="tech-item">
+              <div class="tech-icon">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="15" y="15" width="70" height="70" rx="8" fill="#E34F26"/>
+                  <polygon points="30,25 70,25 65,65 50,70 35,65" fill="white"/>
+                  <text x="50" y="50" text-anchor="middle" fill="#E34F26" font-size="10" font-weight="bold">HTML</text>
+                </svg>
+              </div>
+              <div class="tech-name">HTML5</div>
+              <div class="tech-description">Modern markup language for web structure</div>
+            </div>
+          </div>
+    
+          <div class="email-section">
+            <div class="icon">📧</div>
+            <h3>Ready to Start Learning?</h3>
+            <p><a href="mailto:info@miocode.site">info@miocode.site</a></p>
+          </div>
+        </div>
+    </section>
+    
+    <section id="register" class="scroll-reveal">
+        <div class="registration-form p-5">
+            
+            
+        <div class="text-center mb-4">
+                    <h1 class="display-5 fw-bold text-primary mb-3">
+                                <i class="fas fa-graduation-cap me-3"></i>
+                                Bootcamp Registration
+                    </h1>
+                    <p class="lead text-muted">Join MioCode intensive program and transform your career</p>
+        </div>
+
+        <!-- Success/Error Messages -->
+        <div id="successMessage" class="success-message d-none">
+                            <i class="fas fa-check-circle me-2"></i>
+                            <span id="successText"></span>
+        </div>
+        <div id="errorMessage" class="error-message d-none">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    <span id="errorText"></span>
+        </div>
+                        
+        <!-- Bootstrap Progress Bar -->
+        <div class="progress mb-4" style="height: 8px;">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 0%;" id="formProgressBar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <form id="registrationForm" novalidate>
+            <!-- Personal Information -->
+            <div class="mb-4">
+                        <h3 class="section-header">
+                            <i class="fas fa-user me-2"></i>Personal Information
+                        </h3>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
+                                    <label for="firstName">First Name *</label>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
+                                    <label for="lastName">Last Name *</label>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                                    <label for="email">Email Address *</label>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone" required>
+                                    <label for="phone">Phone Number *</label>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="tel" class="form-control" id="whatsapp" name="whatsapp" placeholder="WhatsApp">
+                                    <label for="whatsapp">WhatsApp Number</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select" id="contactMethod" name="contactMethod" required>
+                                        <option value="">Choose...</option>
+                                        <option value="email">Email</option>
+                                        <option value="phone">Phone</option>
+                                        <option value="whatsapp">WhatsApp</option>
+                                    </select>
+                                    <label for="contactMethod">Preferred Contact Method *</label>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" id="address" name="address" placeholder="Address" style="height: 100px" required></textarea>
+                                    <label for="address">Full Address *</label>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+
+            <!-- Program Details -->
+            <div class="mb-4">
+                        <h3 class="section-header">
+                            <i class="fas fa-code me-2"></i>Program Details
+                        </h3>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select" id="program" name="program" required>
+                                        <option value="">Choose Program...</option>
+                                        <option value="web-development">Full Stack Web Development</option>
+                                        <option value="data-science">Data Science & Analytics</option>
+                                        <option value="mobile-development">Mobile App Development</option>
+                                        <option value="cybersecurity">Cybersecurity</option>
+                                        <option value="cloud-computing">Cloud Computing</option>
+                                        <option value="ai-ml">AI & Machine Learning</option>
+                                    </select>
+                                    <label for="program">Program *</label>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select" id="schedule" name="schedule" required>
+                                        <option value="">Choose Schedule...</option>
+                                        <option value="full-time">Full-time (9 AM - 5 PM)</option>
+                                        <option value="part-time-evening">Part-time Evening (6 PM - 9 PM)</option>
+                                        <option value="part-time-weekend">Part-time Weekend</option>
+                                        <option value="online">Online</option>
+                                    </select>
+                                    <label for="schedule">Schedule *</label>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="date" class="form-control" id="startDate" name="startDate" required>
+                                    <label for="startDate">Preferred Start Date *</label>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select" id="payment" name="payment" required>
+                                        <option value="">Choose Payment Plan...</option>
+                                        <option value="full-payment">Full Payment (10% discount)</option>
+                                        <option value="installments-3">3 Monthly Installments</option>
+                                        <option value="installments-6">6 Monthly Installments</option>
+                                        <option value="scholarship">Scholarship Application</option>
+                                    </select>
+                                    <label for="payment">Payment Plan *</label>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+
+            <!-- Background Information -->
+            <div class="mb-4">
+                        <h3 class="section-header">
+                            <i class="fas fa-info-circle me-2"></i>Background Information
+                        </h3>
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <select class="form-select" id="education" name="education" required>
+                                        <option value="">Choose Education Level...</option>
+                                        <option value="high-school">High School</option>
+                                        <option value="associate">Associate Degree</option>
+                                        <option value="bachelor">Bachelor's Degree</option>
+                                        <option value="master">Master's Degree</option>
+                                        <option value="doctorate">Doctorate</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                    <label for="education">Highest Education Level *</label>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" id="experience" name="experience" placeholder="Experience" style="height: 120px" required></textarea>
+                                    <label for="experience">Relevant Experience (describe any programming, technical, or related experience) *</label>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" id="goals" name="goals" placeholder="Goals" style="height: 120px" required></textarea>
+                                    <label for="goals">Career Goals & Expectations *</label>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+            <!-- Terms -->
+            <div class="mb-4">
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                            <label class="form-check-label" for="agreeTerms">
+                                I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">terms and conditions</a>*
+                            </label>
+                            <div class="invalid-feedback"></div>
+                        </div>
+                                
+                        <div class="text-center text-muted small">
+                            <i class="fas fa-shield-alt me-1"></i>
+                            This site is protected by reCAPTCHA and <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">our terms and conditions</a> apply.
+                        </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">
+                            <span id="submitText">
+                                <i class="fas fa-paper-plane me-2"></i>Submit Application
+                            </span>
+                            <span id="submitSpinner" class="d-none">
+                                <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                                Submitting...
+                            </span>
+                        </button>
+            </div>
+        </form>
+    </section>
+
+
+    <section id="contact" class="scroll-reveal">
+        <div class="contact">
+          <h2>Get In Touch</h2>
+          <div class="contact-grid">
+            <div class="contact-item">
+              <div class="icon">🌐</div>
+              <p><a href="http://miocode.site">miocode.site</a></p>
+            </div>
+            <div class="contact-item">
+              <div class="icon">📱</div>
+              <p>WhatsApp: 0805 807 9900</p>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+          <p>&copy; <span id="year"></span> MioCode Bootcamp. All rights reserved.</p>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#register">Register</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+    </footer>
+    
+    
+     <!-- Terms and Conditions Modal -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="termsModalLabel">Terms and Conditions</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <h6>Admission Requirements</h6>
+              <p>Applicants must be at least 18 years old and have basic computer literacy skills. No prior programming experience is required for beginner programs.</p>
+              
+              <h6>Payment Policy</h6>
+              <p>Full payment is due before the program start date unless an installment plan is approved. Installment plans require a 30% deposit.</p>
+              
+              <h6>Refund Policy</h6>
+              <p>Cancellations made at least 14 days before the program start date will receive a full refund. Cancellations made within 14 days will receive a 50% refund. No refunds after the program starts.</p>
+              
+              <h6>Attendance Policy</h6>
+              <p>Students must maintain at least 80% attendance to be eligible for the certificate of completion.</p>
+              
+              <h6>Code of Conduct</h6>
+              <p>All students are expected to adhere to our professional code of conduct. Disruptive behaviour may result in dismissal without refund.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Understand</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content p-4">
+            <div class="modal-header border-0">
+              <h5 class="modal-title" id="confirmationModalLabel">Application Received</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+              <p>Thank you for applying! We’ll contact you shortly with the next steps.</p>
+            </div>
+            <div class="modal-footer border-0">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+    
+   
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render={{recaptcha_site_key}}"></script>
+    <script>
+        // reCAPTCHA v3 Site Key - Replace with your actual key
+            const RECAPTCHA_SITE_KEY = '{{recaptcha_site_key}}';
+
+            // Set minimum date to today
+            document.addEventListener('DOMContentLoaded', function() {
+                const today = new Date().toISOString().split('T')[0];
+                document.getElementById('startDate').setAttribute('min', today);
+                
+                // Initialize progress bar
+                updateProgressBar();
+            });
+
+            // Form validation and submission
+            document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Reset previous messages
+                hideMessages();
+                
+                // Validate form
+                if (!validateForm()) {
+                    return;
+                }
+                
+                // Execute reCAPTCHA v3
+                let recaptchaToken = '';
+                try {
+                    recaptchaToken = await grecaptcha.execute(RECAPTCHA_SITE_KEY, {action: 'register'});
+                } catch (error) {
+                    console.error('reCAPTCHA error:', error);
+                    showError('Security verification failed. Please refresh the page and try again.');
+                    return;
+                }
+                
+                // Show loading state
+                setLoadingState(true);
+                
+                // Prepare form data
+                const formData = new FormData(this);
+                formData.append('g-recaptcha-response', recaptchaToken);
+                
+                try {
+                    const response = await fetch('/register', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        showSuccess('Application submitted successfully! We will contact you soon.');
+                        this.reset();
+                        updateProgressBar(); // Reset progress bar after form reset
+                    } else {
+                        showError(result.message || 'An error occurred. Please try again.');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    showError('Network error. Please check your connection and try again.');
+                } finally {
+                    setLoadingState(false);
+                }
+            });
+
+            function validateForm() {
+                const form = document.getElementById('registrationForm');
+                let isValid = true;
+                
+                // Clear previous validation
+                form.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
+                
+                // Required fields validation
+                const requiredFields = [
+                    'firstName', 'lastName', 'email', 'phone', 'contactMethod', 
+                    'address', 'program', 'schedule', 'startDate', 'education', 
+                    'experience', 'goals', 'payment'
+                ];
+                
+                requiredFields.forEach(fieldName => {
+                    const field = document.getElementById(fieldName);
+                    if (!field.value.trim()) {
+                        setFieldError(field, 'This field is required');
+                        isValid = false;
+                    }
+                });
+                
+                // Email validation
+                const email = document.getElementById('email');
+                if (email.value && !isValidEmail(email.value)) {
+                    setFieldError(email, 'Please enter a valid email address');
+                    isValid = false;
+                }
+                
+                // Phone validation
+                const phone = document.getElementById('phone');
+                if (phone.value && !isValidPhone(phone.value)) {
+                    setFieldError(phone, 'Please enter a valid phone number');
+                    isValid = false;
+                }
+                
+                // Terms checkbox validation
+                const agreeTerms = document.getElementById('agreeTerms');
+                if (!agreeTerms.checked) {
+                    setFieldError(agreeTerms, 'You must agree to the terms and conditions');
+                    isValid = false;
+                }
+                
+                // Date validation
+                const startDate = document.getElementById('startDate');
+                if (startDate.value) {
+                    const selectedDate = new Date(startDate.value);
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+                    
+                    if (selectedDate < today) {
+                        setFieldError(startDate, 'Start date cannot be in the past');
+                        isValid = false;
+                    }
+                }
+                
+                return isValid;
+            }
+
+            function setFieldError(field, message) {
+                field.classList.add('is-invalid');
+                const feedback = field.parentElement.querySelector('.invalid-feedback') || 
+                            field.parentElement.parentElement.querySelector('.invalid-feedback');
+                if (feedback) {
+                    feedback.textContent = message;
+                }
+            }
+
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            function isValidPhone(phone) {
+                // Remove spaces, hyphens, and parentheses
+                const cleanedPhone = phone.replace(/[\s\-\(\)]/g, '');
+
+                // Regex to match:
+                // 1. + followed by digits (e.g., +2348098674598)
+                // 2. Starts with 0 and more digits (e.g., 08098673498)
+                // 3. Starts with non-zero digit (e.g., 8098673498)
+                const phoneRegex = /^(\+\d{10,15}|0\d{9,14}|[1-9]\d{8,14})$/;
+                
+                return phoneRegex.test(cleanedPhone);
+            }
+
+            function setLoadingState(loading) {
+                const submitBtn = document.getElementById('submitBtn');
+                const submitText = document.getElementById('submitText');
+                const submitSpinner = document.getElementById('submitSpinner');
+                
+                if (loading) {
+                    submitBtn.disabled = true;
+                    submitText.classList.add('d-none');
+                    submitSpinner.classList.remove('d-none');
+                } else {
+                    submitBtn.disabled = false;
+                    submitText.classList.remove('d-none');
+                    submitSpinner.classList.add('d-none');
+                }
+            }
+
+            function showSuccess(message) {
+                const successDiv = document.getElementById('successMessage');
+                const successText = document.getElementById('successText');
+                successText.textContent = message;
+                successDiv.classList.remove('d-none');
+                successDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+
+            function showError(message) {
+                const errorDiv = document.getElementById('errorMessage');
+                const errorText = document.getElementById('errorText');
+                errorText.textContent = message;
+                errorDiv.classList.remove('d-none');
+                errorDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+
+            function hideMessages() {
+                document.getElementById('successMessage').classList.add('d-none');
+                document.getElementById('errorMessage').classList.add('d-none');
+            }
+
+            // Progress bar update function
+            function updateProgressBar() {
+                const form = document.getElementById('registrationForm');
+                const progressBar = document.getElementById('formProgressBar');
+                const submitBtn = document.getElementById('submitBtn');
+                
+                if (!form || !progressBar) return;
+                
+                // Define all required fields that count towards progress
+                const requiredFields = [
+                    'firstName', 'lastName', 'email', 'phone', 'contactMethod', 
+                    'address', 'program', 'schedule', 'startDate', 'education', 
+                    'experience', 'goals', 'payment', 'agreeTerms'
+                ];
+                
+                let completedFields = 0;
+                let totalFields = requiredFields.length;
+                
+                requiredFields.forEach(fieldName => {
+                    const field = document.getElementById(fieldName);
+                    if (field) {
+                        let isCompleted = false;
+                        
+                        if (field.type === 'checkbox') {
+                            isCompleted = field.checked;
+                        } else if (field.tagName === 'SELECT') {
+                            isCompleted = field.value !== '';
+                        } else {
+                            isCompleted = field.value.trim() !== '';
+                            
+                            // Additional validation for email and phone
+                            if (fieldName === 'email' && isCompleted) {
+                                isCompleted = isValidEmail(field.value);
+                            } else if (fieldName === 'phone' && isCompleted) {
+                                isCompleted = isValidPhone(field.value);
+                            } else if (fieldName === 'startDate' && isCompleted) {
+                                const selectedDate = new Date(field.value);
+                                const today = new Date();
+                                today.setHours(0, 0, 0, 0);
+                                isCompleted = selectedDate >= today;
+                            }
+                        }
+                        
+                        if (isCompleted) {
+                            completedFields++;
+                        }
+                    }
+                });
+                
+                const percentage = Math.round((completedFields / totalFields) * 100);
+                progressBar.style.width = `${percentage}%`;
+                progressBar.setAttribute('aria-valuenow', percentage);
+                
+                // Enable/disable submit button based on completion
+                if (submitBtn) {
+                    submitBtn.disabled = percentage < 100;
+                }
+                
+                // Add visual feedback based on progress
+                progressBar.className = 'progress-bar';
+                if (percentage >= 100) {
+                    progressBar.classList.add('bg-success');
+                } else if (percentage >= 75) {
+                    progressBar.classList.add('bg-info');
+                } else if (percentage >= 50) {
+                    progressBar.classList.add('bg-warning');
+                } else {
+                    progressBar.classList.add('bg-primary');
+                }
+            }
+
+            // Real-time validation feedback and progress update
+            document.querySelectorAll('input, select, textarea').forEach(input => {
+                // Update progress on any input change
+                input.addEventListener('input', updateProgressBar);
+                input.addEventListener('change', updateProgressBar);
+                
+                input.addEventListener('blur', function() {
+                    if (this.hasAttribute('required') && !this.value.trim()) {
+                        setFieldError(this, 'This field is required');
+                    } else {
+                        this.classList.remove('is-invalid');
+                    }
+                    updateProgressBar();
+                });
+                
+                input.addEventListener('input', function() {
+                    if (this.classList.contains('is-invalid') && this.value.trim()) {
+                        this.classList.remove('is-invalid');
+                    }
+                    updateProgressBar();
+                });
+            });
+
+            // Special validation for email and phone on input
+            document.getElementById('email').addEventListener('input', function() {
+                if (this.value && !isValidEmail(this.value)) {
+                    setFieldError(this, 'Please enter a valid email address');
+                } else if (this.value) {
+                    this.classList.remove('is-invalid');
+                }
+                updateProgressBar();
+            });
+
+            document.getElementById('phone').addEventListener('input', function() {
+                if (this.value && !isValidPhone(this.value)) {
+                    setFieldError(this, 'Please enter a valid phone number');
+                } else if (this.value) {
+                    this.classList.remove('is-invalid');
+                }
+                updateProgressBar();
+            });
+
+            // Update progress when checkbox is clicked
+            document.getElementById('agreeTerms').addEventListener('change', updateProgressBar);
+    </script>
+    
+
+</body>
+</html>
