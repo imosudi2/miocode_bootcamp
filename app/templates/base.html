@@ -131,7 +131,7 @@
   <script src="https://www.google.com/recaptcha/api.js?render={{recaptcha_site_key}}"></script>
   <script>
         // reCAPTCHA v3 Site Key - Replace with your actual key
-            const RECAPTCHA_SITE_KEY = '{{recaptcha_site_key}}';
+            const RECAPTCHA_SITE_KEY_OPEN = '{{recaptcha_site_key}}';
 
             // Set minimum date to today
             document.addEventListener('DOMContentLoaded', function() {
@@ -157,7 +157,7 @@
                 // Execute reCAPTCHA v3
                 let recaptchaToken = '';
                 try {
-                    recaptchaToken = await grecaptcha.execute(RECAPTCHA_SITE_KEY, {action: 'register'});
+                    recaptchaToken = await grecaptcha.execute(RECAPTCHA_SITE_KEY_OPEN, {action: 'register'});
                 } catch (error) {
                     console.error('reCAPTCHA error:', error);
                     showError('Security verification failed. Please refresh the page and try again.');
