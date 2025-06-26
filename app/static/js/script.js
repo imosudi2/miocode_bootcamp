@@ -104,7 +104,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
             formData.append('g-recaptcha-response', recaptchaToken);
             
             try {
-                const response = await fetch('/register', {
+                const response = await fetch('/', {
                     method: 'POST',
                     body: formData
                 });
@@ -405,7 +405,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
         formData.append('g-recaptcha-response', recaptchaToken);
         
         try {
-            const response = await fetch('/register', {
+            const response = await fetch('/', {
                 method: 'POST',
                 body: formData
             });

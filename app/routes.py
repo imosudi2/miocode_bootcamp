@@ -137,8 +137,8 @@ def index():
     return render_template('index.html', today=date.today(), recaptcha_site_key=recaptcha_site_key)
 
 
-@app.route('/register', methods=['GET', 'POST'])
-def register():
+@app.route('/registert', methods=['GET', 'POST'])
+def registert():
     if request.method == 'POST':
         form = request.form
         token = form.get("g-recaptcha-response")
