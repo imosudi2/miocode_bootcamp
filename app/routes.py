@@ -4,8 +4,11 @@ import sys
 from os.path import join, dirname
 from dotenv import load_dotenv
 import requests
-from datetime import date
+from datetime import date, datetime
 
+
+from pathlib import Path
+import json
 
 from . import app
 from .logic import verify_recaptcha
@@ -106,6 +109,32 @@ def index():
             # Success response
             success_message = "Application submitted successfully! We will contact you shortly."
             
+            data["submitted_at"] = datetime.now().isoformat()
+            json_file = Path("submissions.json")
+            try:
+                if json_file.exists():
+                    with open(json_file, "r", encoding="utf-8") as f:
+                        submissions = json.load(f)
+                else:
+                    submissions = []
+
+                submissions.append(data)
+
+                with open(json_file, "w", encoding="utf-8") as f:
+                    json.dump(submissions, f, indent=2)
+            except Exception as e:
+                print("Error saving submission:", e)
+            
+            # Success response
+            success_message = "Application submitted successfully! We will contact you shortly."
+
+            if is_ajax:
+                return jsonify(success=True, message=success_message), 200
+            else:
+                flash(success_message)
+                return redirect(url_for('index'))
+
+            
             if is_ajax:
                 response = jsonify({
                     'success': True,
@@ -116,6 +145,33 @@ def index():
             else:
                 flash(success_message)
                 return redirect(url_for('index'))
+            
+            # Save to local JSON as pseudo-database
+            data["submitted_at"] = datetime.now().isoformat()
+            json_file = Path("submissions.json")
+            try:
+                if json_file.exists():
+                    with open(json_file, "r", encoding="utf-8") as f:
+                        submissions = json.load(f)
+                else:
+                    submissions = []
+
+                submissions.append(data)
+
+                with open(json_file, "w", encoding="utf-8") as f:
+                    json.dump(submissions, f, indent=2)
+            except Exception as e:
+                print("Error saving submission:", e)
+
+            # Success response
+            success_message = "Application submitted successfully! We will contact you shortly."
+
+            if is_ajax:
+                return jsonify(success=True, message=success_message), 200
+            else:
+                flash(success_message)
+                return redirect(url_for('index'))
+
                 
         except Exception as e:
             # Handle unexpected errors
@@ -136,41 +192,18 @@ def index():
     # GET request - render the form
     return render_template('index.html', today=date.today(), recaptcha_site_key=recaptcha_site_key)
 
+@app.route('/admin')
+def admin_dashboard():
+    json_file = Path("submissions.json")
+    submissions = []
 
-@app.route('/registert', methods=['GET', 'POST'])
-def registert():
-    if request.method == 'POST':
-        form = request.form
-        token = form.get("g-recaptcha-response")
+    if json_file.exists():
+        try:
+            with open(json_file, "r", encoding="utf-8") as f:
+                submissions = json.load(f)
+        except Exception as e:
+            flash(f"Error loading submissions: {e}")
+    
+    return render_template("admin.html", submissions=submissions)
 
-        if not verify_recaptcha(token):
-            return jsonify(success=False, message="CAPTCHA verification failed.")
-
-        data = {
-            "first_name": form.get("firstName"),
-            "last_name": form.get("lastName"),
-            "email": form.get("email"),
-            "phone": form.get("phone"),
-            "whatsapp": form.get("whatsapp"),
-            "contact_method": form.get("contactMethod"),
-            "address": form.get("address"),
-            "program": form.get("program"),
-            "schedule": form.get("schedule"),
-            "start_date": form.get("startDate"),
-            "education": form.get("education"),
-            "experience": form.get("experience"),
-            "goals": form.get("goals"),
-            "payment_plan": form.get("payment"),
-            "agreed_to_terms": form.get("agreeTerms")
-        }
-
-        # Simulated backend processing
-        print("=== New Bootcamp Application ===")
-        for k, v in data.items():
-            print(f"{k}: {v}")
-        print("================================")
-
-        return jsonify(success=True)
-
-    return render_template("register.html", today=date.today(), recaptcha_site_key=recaptcha_site_key)
 

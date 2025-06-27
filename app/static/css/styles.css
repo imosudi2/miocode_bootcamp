@@ -710,13 +710,13 @@
       transform: translateY(0);
     }
     .footer {
-      background: var(--dark-light);
-      color: var(--text-light);
-      padding: 2rem 1rem;
+      background-color: #f8f9fa;
+      padding: 1rem 0;
       text-align: center;
-      font-size: 0.9rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.95rem;
+      color: #6c757d;
     }
+    
 
     .footer-container {
       max-width: 1200px;

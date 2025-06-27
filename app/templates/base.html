@@ -32,7 +32,7 @@
   <script src="https://www.google.com/recaptcha/api.js?render={{ recaptcha_site_key }}"></script>
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
   <!-- Navbar -->
   <nav id="navbar" aria-label="Main navigation">
     <div class="nav-container">
@@ -55,11 +55,13 @@
     </div>
   </nav>
 
-  <!-- Main Content -->
+  <!-- Main Content Wrapper -->
+  <main class="flex-grow-1">
   {% block main_body %}{% endblock main_body %}
+  </main>
 
   <!-- Footer -->
-  <footer class="footer" aria-label="Footer navigation">
+  <footer class="footer mt-auto" aria-label="Footer navigation">
     <div class="footer-container">
       <p>&copy; <span id="year"></span> MioCode Bootcamp. All rights reserved.</p>
       <ul class="footer-links">
