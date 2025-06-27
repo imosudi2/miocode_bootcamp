@@ -1,4 +1,7 @@
-from flask import Flask, render_template, request, redirect, flash, url_for, jsonify
+from flask import Flask, render_template, request, redirect, flash, url_for, jsonify,  session
+from werkzeug.security import check_password_hash, generate_password_hash
+
+
 import os, time
 import sys
 from os.path import join, dirname
@@ -9,7 +12,7 @@ from pathlib import Path
 import json
 
 from . import app
-from .logic import verify_recaptcha
+from .logic import load_users, verify_recaptcha
 
 DATA_PATH = os.path.join(app.root_path, 'data')
 os.makedirs(DATA_PATH, exist_ok=True)
@@ -194,8 +197,11 @@ def index():
 
 @app.route('/admin')
 def admin_dashboard():
+    if 'admin_user' not in session:
+        flash("You must be logged in to access the admin dashboard.")
+        return redirect(url_for('admin_login'))
+
     submissions = []
-    
     try:
         if os.path.exists(file_path):
             with open(file_path, "r", encoding="utf-8") as f:
@@ -203,5 +209,33 @@ def admin_dashboard():
     except Exception as e:
         flash(f"Error loading submissions: {e}")
         print(f"Error loading submissions: {e}")
-    
-    return render_template("admin.html", submissions=submissions)
+
+    return render_template("admin.html", submissions=submissions, admin_user=session.get('admin_user'))
+
+@app.route('/admin/login', methods=['GET', 'POST'])
+def admin_login():
+    users = load_users()
+
+    if request.method == 'POST':
+        username = request.form.get('username', '').strip().lower()
+        password = request.form.get('password', '').strip()
+
+        user = next((u for u in users if u['username'] == username), None)
+
+        if user and check_password_hash(user['password_hash'], password):
+            session['admin_user'] = username
+            flash(f"Welcome, {username}!")
+            return redirect(url_for('admin_dashboard'))
+        else:
+            flash("Invalid username or password.")
+
+    return render_template('admin_login.html')
+
+
+@app.route('/admin/logout')
+def admin_logout():
+    session.pop('admin_user', None)
+    flash("You have been logged out.")
+    return redirect(url_for('admin_login'))
+
+

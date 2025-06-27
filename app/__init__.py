@@ -5,8 +5,8 @@ from datetime import date
 from dotenv import load_dotenv
 
 app = Flask(__name__)
-app.secret_key = os.urandom(24)
-
+#app.secret_key = os.urandom(24)
+app.secret_key = os.environ.get('FLASK_SECRET_KEY')#, 'super-secret-key')
 # reCAPTCHA keys
 RECAPTCHA_SECRET_KEY = os.environ.get("RECAPTCHA_SECRET_KEY")
 RECAPTCHA_SITE_KEY = os.environ.get("RECAPTCHA_SITE_KEY")
