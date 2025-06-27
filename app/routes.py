@@ -17,8 +17,8 @@ load_dotenv(dotenv_path)
 RECAPTCHA_SECRET_KEY = os.environ.get("RECAPTCHA_SECRET_KEY")
 recaptcha_site_key = os.environ.get("RECAPTCHA_SITE_KEY")
 
-@app.route('/ss', methods=['GET', 'POST'])
-def indexss():
+@app.route('/', methods=['GET', 'POST'])
+def index():
     if request.method == 'POST':
         # Check if this is an AJAX request (multiple ways to detect)
         is_ajax = (
@@ -137,8 +137,8 @@ def indexss():
     return render_template('index.html', today=date.today(), recaptcha_site_key=recaptcha_site_key)
 
 
-@app.route('/', methods=['GET', 'POST'])
-def index():
+@app.route('/registert', methods=['GET', 'POST'])
+def registert():
     if request.method == 'POST':
         form = request.form
         token = form.get("g-recaptcha-response")
@@ -172,5 +172,5 @@ def index():
 
         return jsonify(success=True)
 
-    return render_template("index.html", today=date.today(), recaptcha_site_key=recaptcha_site_key)
+    return render_template("register.html", today=date.today(), recaptcha_site_key=recaptcha_site_key)
 
