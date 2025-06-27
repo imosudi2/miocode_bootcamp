@@ -72,6 +72,7 @@ def index():
                 "schedule": form.get("schedule"),
                 "start_date": form.get("startDate"),
                 "education": form.get("education"),
+                "education_sublevel": form.get("undergradSublevel"),
                 "experience": form.get("experience"),
                 "goals": form.get("goals"),
                 "payment_plan": form.get("payment"),

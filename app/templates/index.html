@@ -200,13 +200,12 @@
 <section id="register" class="scroll-reveal">
   <div class="registration-form p-5">
       
-      
   <div class="text-center mb-4">
-              <h1 class="display-5 fw-bold text-primary mb-3">
+      <h1 class="display-5 fw-bold text-primary mb-3">
                           <i class="fas fa-graduation-cap me-3"></i>
                           Bootcamp Registration
-              </h1>
-              <p class="lead text-muted">Join MioCode intensive program and transform your career</p>
+      </h1>
+      <p class="lead text-muted">Join MioCode intensive program and transform your career</p>
   </div>
 
   <!-- Success/Error Messages -->
@@ -355,11 +354,29 @@
                                   <option value="">Choose Education Level...</option>
                                   <option value="high-school">High School</option>
                                   <option value="associate">Associate Degree</option>
+                                  <option value="undergraduate">Undergraduate</option>
                                   <option value="bachelor">Bachelor's Degree</option>
                                   <option value="master">Master's Degree</option>
                                   <option value="doctorate">Doctorate</option>
                                   <option value="other">Other</option>
                               </select>
+                              <div class="col-12 d-none" id="undergrad-sublevel-container">
+                                <div class="form-floating">
+                                    <select class="form-select" id="undergradSublevel" name="undergradSublevel">
+                                        <option value="">Choose current level...</option>
+                                        <option value="year1">Year 1</option>
+                                        <option value="year2">Year 2</option>
+                                        <option value="year3">Year 3</option>
+                                        <option value="year4">Year 4</option>
+                                        <option value="year5">Year 5</option>
+                                        <option value="nd1">ND1</option>
+                                        <option value="nd2">ND2</option>
+                                    </select>
+                                    <label for="undergradSublevel">Undergraduate level</label>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                              </div>
+                            
                               <label for="education">Highest Education Level *</label>
                               <div class="invalid-feedback"></div>
                           </div>

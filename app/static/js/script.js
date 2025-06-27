@@ -272,4 +272,22 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       percentage >= 50 ? 'bg-warning' : 'bg-primary'
     );
   }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const educationField = document.getElementById('education');
+    const sublevelContainer = document.getElementById('undergrad-sublevel-container');
+    const sublevelSelect = document.getElementById('undergradSublevel');
+
+    educationField.addEventListener('change', function () {
+      if (this.value === 'undergraduate') {
+        sublevelContainer.classList.remove('d-none');
+        sublevelSelect.setAttribute('required', 'required');
+      } else {
+        sublevelContainer.classList.add('d-none');
+        sublevelSelect.removeAttribute('required');
+        sublevelSelect.value = '';
+      }
+    });
+  });
+
   
