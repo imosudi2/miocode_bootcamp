@@ -83,9 +83,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   
       try {
         const response = await fetch(this.action || window.location.pathname, {
-          method: 'POST',
-          body: formData
-        });
+            method: 'POST',
+            headers: {
+              'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: formData
+          });
+          
   
         const result = await response.json();
   
