@@ -6,7 +6,7 @@ from app import app
 
 
 def verify_recaptcha(token, RECAPTCHA_SECRET_KEY):
-    print(f"Using RECAPTCHA_SECRET_KEY: {RECAPTCHA_SECRET_KEY}"); time.sleep(300)
+    #print(f"Using RECAPTCHA_SECRET_KEY: {RECAPTCHA_SECRET_KEY}"); time.sleep(300)
     if not token:
         return False
 
