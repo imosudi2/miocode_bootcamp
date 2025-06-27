@@ -37,7 +37,7 @@ def index():
         
         # reCAPTCHA token verification
         recaptcha_token = form.get('g-recaptcha-response')
-        if not verify_recaptcha(recaptcha_token):
+        if not verify_recaptcha(recaptcha_token, RECAPTCHA_SECRET_KEY):
             error_message = "CAPTCHA verification failed. Please try again."
             print(f"reCAPTCHA failed for token: {recaptcha_token}")
             

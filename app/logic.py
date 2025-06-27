@@ -1,11 +1,12 @@
 import requests, time
 
-from app import RECAPTCHA_SECRET_KEY, app
-
-print(f"Using RECAPTCHA_SECRET_KEY: {RECAPTCHA_SECRET_KEY}"); time.sleep(300)
+from app import app
 
 
-def verify_recaptcha(token):
+
+
+def verify_recaptcha(token, RECAPTCHA_SECRET_KEY):
+    print(f"Using RECAPTCHA_SECRET_KEY: {RECAPTCHA_SECRET_KEY}"); time.sleep(300)
     if not token:
         return False
 
