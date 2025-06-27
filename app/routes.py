@@ -5,8 +5,6 @@ from os.path import join, dirname
 from dotenv import load_dotenv
 import requests
 from datetime import date, datetime
-
-
 from pathlib import Path
 import json
 
@@ -17,8 +15,7 @@ DATA_PATH = os.path.join(app.root_path, 'data')
 os.makedirs(DATA_PATH, exist_ok=True)
 
 file_path = os.path.join(DATA_PATH, 'submissions.json')
-
-
+#sudo chown -R $USER:$USER /home/mosud/Downloads/miocode/miocode_bootcamp/app/data/
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 # reCAPTCHA keys
@@ -28,7 +25,7 @@ recaptcha_site_key = os.environ.get("RECAPTCHA_SITE_KEY")
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        # Check if this is an AJAX request (multiple ways to detect)
+        # Check if this is an AJAX request
         is_ajax = (
             request.headers.get('X-Requested-With') == 'XMLHttpRequest' or
             request.headers.get('Content-Type', '').startswith('multipart/form-data') and 
@@ -50,12 +47,10 @@ def index():
             print(f"reCAPTCHA failed for token: {recaptcha_token}")
             
             if is_ajax:
-                response = jsonify({
+                return jsonify({
                     'success': False,
                     'message': error_message
-                })
-                response.headers['Content-Type'] = 'application/json'
-                return response, 400
+                }), 400
             else:
                 flash(error_message)
                 return redirect(url_for('index'))
@@ -78,7 +73,6 @@ def index():
                 "goals": form.get("goals"),
                 "payment_plan": form.get("payment"),
                 "agreed_to_terms": form.get("agreeTerms") == "on"
-
             }
 
             # Basic validation
@@ -87,20 +81,28 @@ def index():
                 'contact_method', 'program', 'schedule', 'start_date',
                 'experience', 'goals', 'payment_plan'
             ]
-            data['agreed_to_terms'] = data['agreed_to_terms'] is True or data['agreed_to_terms'] == 'on'
-
 
             missing_fields = [field for field in required_fields if not data.get(field)]
             
             if missing_fields:
                 error_message = f"Missing required fields: {', '.join(missing_fields)}"
                 if is_ajax:
-                    response = jsonify({
+                    return jsonify({
                         'success': False,
                         'message': error_message
-                    })
-                    response.headers['Content-Type'] = 'application/json'
-                    return response, 400
+                    }), 400
+                else:
+                    flash(error_message)
+                    return redirect(url_for('index'))
+
+            # Check terms agreement
+            if not data['agreed_to_terms']:
+                error_message = "You must agree to the terms and conditions."
+                if is_ajax:
+                    return jsonify({
+                        'success': False,
+                        'message': error_message
+                    }), 400
                 else:
                     flash(error_message)
                     return redirect(url_for('index'))
@@ -111,85 +113,77 @@ def index():
                 print(f"{key.replace('_', ' ').title()}: {value}")
             print("================================")
 
-            # Success response
-            success_message = "Application submitted successfully! We will contact you shortly."
-            
+            # Save to JSON file with proper error handling
             data["submitted_at"] = datetime.now().isoformat()
-            json_file = Path("submissions.json")
+            
             try:
-                if json_file.exists():
-                    with open(file_path, "r", encoding="utf-8") as f:
-                        submissions = json.load(f)
-                else:
-                    submissions = []
+                # Ensure the directory exists and has proper permissions
+                os.makedirs(DATA_PATH, mode=0o755, exist_ok=True)
+                
+                # Load existing submissions
+                submissions = []
+                if os.path.exists(file_path):
+                    try:
+                        with open(file_path, "r", encoding="utf-8") as f:
+                            submissions = json.load(f)
+                    except (json.JSONDecodeError, FileNotFoundError):
+                        submissions = []
 
+                # Add new submission
                 submissions.append(data)
 
+                # Write back to file with proper error handling
                 with open(file_path, "w", encoding="utf-8") as f:
-                    json.dump(submissions, f, indent=2)
+                    json.dump(submissions, f, indent=2, ensure_ascii=False)
+                
+                print(f"Successfully saved submission to {file_path}")
+                
+            except PermissionError as e:
+                print(f"Permission error saving submission: {e}")
+                # You might want to save to a different location or handle this differently
+                error_message = "Unable to save your application due to server permissions. Please contact support."
+                if is_ajax:
+                    return jsonify({
+                        'success': False,
+                        'message': error_message
+                    }), 500
+                else:
+                    flash(error_message)
+                    return redirect(url_for('index'))
             except Exception as e:
-                print("Error saving submission:", e)
-            
+                print(f"Unexpected error saving submission: {e}")
+                error_message = "An error occurred while saving your application. Please try again."
+                if is_ajax:
+                    return jsonify({
+                        'success': False,
+                        'message': error_message
+                    }), 500
+                else:
+                    flash(error_message)
+                    return redirect(url_for('index'))
+
             # Success response
             success_message = "Application submitted successfully! We will contact you shortly."
-
-            if is_ajax:
-                return jsonify(success=True, message=success_message), 200
-            else:
-                flash(success_message)
-                return redirect(url_for('index'))
-
             
             if is_ajax:
-                response = jsonify({
+                return jsonify({
                     'success': True,
                     'message': success_message
-                })
-                response.headers['Content-Type'] = 'application/json'
-                return response, 200
+                }), 200
             else:
                 flash(success_message)
                 return redirect(url_for('index'))
-            
-            # Save to local JSON as pseudo-database
-            data["submitted_at"] = datetime.now().isoformat()
-            json_file = Path("submissions.json")
-            try:
-                if json_file.exists():
-                    with open(json_file, "r", encoding="utf-8") as f:
-                        submissions = json.load(f)
-                else:
-                    submissions = []
-
-                submissions.append(data)
-
-                with open(json_file, "w", encoding="utf-8") as f:
-                    json.dump(submissions, f, indent=2)
-            except Exception as e:
-                print("Error saving submission:", e)
-
-            # Success response
-            success_message = "Application submitted successfully! We will contact you shortly."
-
-            if is_ajax:
-                return jsonify(success=True, message=success_message), 200
-            else:
-                flash(success_message)
-                return redirect(url_for('index'))
-
                 
         except Exception as e:
             # Handle unexpected errors
             error_message = "An error occurred while processing your application. Please try again."
-            print(f"Error processing form: {str(e)}")  # Log the actual error
+            print(f"Error processing form: {str(e)}")
             
             if is_ajax:
-                response = jsonify({
+                return jsonify({
                     'success': False,
                     'message': error_message
-                })
-                response.headers['Content-Type'] = 'application/json'
-                return response, 500
+                }), 500
             else:
                 flash(error_message)
                 return redirect(url_for('index'))
@@ -200,16 +194,14 @@ def index():
 
 @app.route('/admin')
 def admin_dashboard():
-    json_file = Path("submissions.json")
     submissions = []
-
-    if json_file.exists():
-        try:
-            with open(json_file, "r", encoding="utf-8") as f:
+    
+    try:
+        if os.path.exists(file_path):
+            with open(file_path, "r", encoding="utf-8") as f:
                 submissions = json.load(f)
-        except Exception as e:
-            flash(f"Error loading submissions: {e}")
+    except Exception as e:
+        flash(f"Error loading submissions: {e}")
+        print(f"Error loading submissions: {e}")
     
     return render_template("admin.html", submissions=submissions)
-
-
