@@ -13,6 +13,11 @@ import json
 from . import app
 from .logic import verify_recaptcha
 
+DATA_PATH = os.path.join(app.root_path, 'data')
+os.makedirs(DATA_PATH, exist_ok=True)
+
+file_path = os.path.join(DATA_PATH, 'submissions.json')
+
 
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
@@ -113,14 +118,14 @@ def index():
             json_file = Path("submissions.json")
             try:
                 if json_file.exists():
-                    with open(json_file, "r", encoding="utf-8") as f:
+                    with open(file_path, "r", encoding="utf-8") as f:
                         submissions = json.load(f)
                 else:
                     submissions = []
 
                 submissions.append(data)
 
-                with open(json_file, "w", encoding="utf-8") as f:
+                with open(file_path, "w", encoding="utf-8") as f:
                     json.dump(submissions, f, indent=2)
             except Exception as e:
                 print("Error saving submission:", e)
@@ -191,6 +196,7 @@ def index():
     
     # GET request - render the form
     return render_template('index.html', today=date.today(), recaptcha_site_key=recaptcha_site_key)
+
 
 @app.route('/admin')
 def admin_dashboard():
