@@ -2,7 +2,7 @@
 
 {% block main_body %}
         
-<div class="container mt-5">
+<div class="container mt-5 py-5">
   <h2>Bootcamp Applications</h2>
   <p class="text-muted">Total: {{ submissions|length }}</p>
 
@@ -17,6 +17,7 @@
           <th>Phone</th>
           <th>Program</th>
           <th>Schedule</th>
+          <th>Payment Plan</th>
           <th>Start Date</th>
           <th>Submitted At</th>
         </tr>
@@ -30,6 +31,7 @@
           <td>{{ s.phone }}</td>
           <td>{{ s.program }}</td>
           <td>{{ s.schedule }}</td>
+          <td>{{ s.payment_plan}}</td>
           <td>{{ s.start_date }}</td>
           <td>{{ s.submitted_at|default('—') }}</td>
         </tr>
