@@ -10,7 +10,7 @@ load_dotenv(dotenv_path)
 
 app = Flask(__name__)
 #app.secret_key = os.urandom(24)
-print(os.environ.get('FLASK_SECRET_KEY'))
+#print(os.environ.get('FLASK_SECRET_KEY'))
 app.secret_key = os.environ.get('FLASK_SECRET_KEY')#, 'super-secret-key')
 # reCAPTCHA keys
 RECAPTCHA_SECRET_KEY = os.environ.get("RECAPTCHA_SECRET_KEY")
