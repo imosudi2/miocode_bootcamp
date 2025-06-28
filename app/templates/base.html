@@ -49,12 +49,7 @@
   <nav id="navbar" aria-label="Main navigation">
     <div class="nav-container">
       <a href="/" class="logo" aria-label="MioCode Home">
-        <svg width="160" height="40" viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoTitle">
-          <title id="logoTitle">MioCode Logo</title>
-          <text x="0" y="28" font-family="Inter, sans-serif" font-weight="800" font-size="24" fill="#0ea5e9">mioC</text>
-          <text x="65" y="28" font-family="JetBrains Mono, monospace" font-size="20" fill="#64748b">ø</text>
-          <text x="78" y="28" font-family="Inter, sans-serif" font-weight="800" font-size="24" fill="#64748b">&lt;le</text>
-        </svg>
+        <img src="{{ url_for('static', filename='images/miocode_logo.png')}}"  alt="MioCode Logo" style="max-width: 120px; height: auto;" />
       </a>
       <ul class="nav-links">
         <li><a href="#home"><i class="bi bi-house-door-fill"></i>Home</a></li>

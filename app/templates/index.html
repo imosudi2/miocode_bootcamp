@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 
 {% block main_body %}
@@ -6,22 +7,63 @@
   <div class="hero-bg"></div>
   <div class="hero-content">
     <h1>MioCode Bootcamp</h1>
-    <p class="subtitle">Transform Your Tech Career</p>
-    <p class="tagline">Master Cloud Computing • Edge Technologies • Python Development</p>
+    <p class="subtitle">Transform Your Tech Career with Confidence</p>
+    <p class="tagline">Learn. Build. Launch.</p>
+
+    <div class="quote">
+      <em>“For the things we have to learn before we can do them, we learn by doing them.”</em>
+      <br><strong>— Aristotle</strong>
+    </div>
+
+    <p>
+      At MioCode, we bridge the gap between theory and practical experience. Our programs are led by seasoned academics and tech professionals, combining structured learning with real-world projects.
+    </p>
+    <p>
+      From foundational coding to advanced cloud and DevOps, you’ll gain the skills required to thrive in the global tech ecosystem.
+    </p>
     <a href="#courses" class="cta-button">Start Your Journey</a>
   </div>
 </section>
 
 <section id="about" class="scroll-reveal">
-  <div class="about">
-    <h2 class="section-title">About Us</h2>
-    <div class="quote">
-      For the things we have to learn before we can do them, we learn by doing them.
-      <br><strong>— Aristotle</strong>
+  <div class="about container">
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <img src="{{ url_for('static', filename='images/miocode_logo.png')}}" alt="MioCode Logo" style="max-width: 180px; height: auto;" />
     </div>
-    <p>Just as buildings need strong foundations, enterprise business needs IT infrastructure that will enable applications to scale and perform. Our comprehensive bootcamp prepares you for the future of technology with hands-on experience in system administration, cloud computing, and modern web development.</p>
+
+    <h2 class="section-title">About MioCode Bootcamp</h2>
+
+    <p>
+      <strong>MioCode Bootcamp</strong> is your launchpad into tech. Whether you’re just out of secondary school, in university, or exploring your next step, we’ve built this platform to help you grow from beginner to job-ready tech talent.
+    </p>
+
+    <p>
+      Our instructors aren’t just teachers—they’re practising engineers and tech professionals with years of experience across Africa’s leading projects. They’ll guide you every step of the way, using real-world tools and projects you can show off in your portfolio.
+    </p>
+
+    <p>
+      With flexible learning schedules, collaborative projects, and personalised support, MioCode makes it easy for students like you to build skills that matter.
+    </p>
+
+    <p>We offer beginner-friendly pathways in:</p>
+
+    <ul class="mt-3">
+      <li>Full Stack Web Development</li>
+      <li>Mobile App Development</li>
+      <li>Data Science & Analytics</li>
+      <li>Cybersecurity</li>
+      <li>Cloud & Edge Computing</li>
+      <li>AI & Machine Learning</li>
+    </ul>
+
+    <p class="mt-4 text-center fw-semibold text-primary">
+      No matter your background, if you’re curious and ready to learn—<br>
+      MioCode Bootcamp is where your tech journey begins.
+    </p>
   </div>
 </section>
+
+
 
 <section id="courses" class="scroll-reveal">
   <h2 class="section-title">Our Programs</h2>
