@@ -277,16 +277,31 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const educationField = document.getElementById('education');
     const sublevelContainer = document.getElementById('undergrad-sublevel-container');
     const sublevelSelect = document.getElementById('undergradSublevel');
+    const ageContainer = document.getElementById('age-container');
+    const ageInput = document.getElementById('preTertiaryAge');
 
     educationField.addEventListener('change', function () {
-      if (this.value === 'undergraduate') {
-        sublevelContainer.classList.remove('d-none');
-        sublevelSelect.setAttribute('required', 'required');
-      } else {
-        sublevelContainer.classList.add('d-none');
-        sublevelSelect.removeAttribute('required');
-        sublevelSelect.value = '';
-      }
+        const selected = this.value;
+
+        // Handle Undergraduate
+        if (selected === 'undergraduate') {
+            sublevelContainer.classList.remove('d-none');
+            sublevelSelect.setAttribute('required', 'required');
+        } else {
+            sublevelContainer.classList.add('d-none');
+            sublevelSelect.removeAttribute('required');
+            sublevelSelect.value = '';
+        }
+
+        // Handle Pre-Tertiary Age
+        if (selected === 'pre-tertiary') {
+            ageContainer.classList.remove('d-none');
+            ageInput.setAttribute('required', 'required');
+        } else {
+            ageContainer.classList.add('d-none');
+            ageInput.removeAttribute('required');
+            ageInput.value = '';
+        }
     });
   });
 

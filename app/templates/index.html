@@ -352,7 +352,7 @@
                           <div class="form-floating">
                               <select class="form-select" id="education" name="education" required>
                                   <option value="">Choose Education Level...</option>
-                                  <option value="high-school">High School</option>
+                                  <option value="pre-tertiary">Pre-Tertiary (Primary/Secondary School)</option>
                                   <option value="associate">Associate Degree</option>
                                   <option value="undergraduate">Undergraduate</option>
                                   <option value="bachelor">Bachelor's Degree</option>
@@ -376,6 +376,14 @@
                                     <div class="invalid-feedback"></div>
                                 </div>
                               </div>
+                              <div class="col-md-6 d-none" id="age-container">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" id="preTertiaryAge" name="preTertiaryAge" placeholder="Enter Age" min="10" max="17">
+                                    <label for="preTertiaryAge">Age (10-17 years)</label>
+                                    <div class="invalid-feedback">Please enter an age between 10 and 17.</div>
+                                </div>
+                              </div>
+                            
                             
                               <label for="education">Highest Education Level *</label>
                               <div class="invalid-feedback"></div>
