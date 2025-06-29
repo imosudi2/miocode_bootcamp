@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request, redirect, flash, url_for, jsonify,  session
+from flask import Flask, render_template, request, redirect, flash, url_for, jsonify,  session, abort
 from werkzeug.security import check_password_hash, generate_password_hash
-
+from werkzeug.exceptions import HTTPException
 
 import os, time
 import sys
@@ -254,3 +254,76 @@ def admin_logout():
     return redirect(url_for('admin_login'))
 
 
+# 400 - Bad Request
+@app.errorhandler(400)
+def bad_request(error):
+    flash("Bad request. Please check your input and try again.", "danger")
+    return redirect(request.referrer or url_for('index'))
+
+# 401 - Unauthorized
+@app.errorhandler(401)
+def unauthorized(error):
+    flash("You must be logged in to access this page.", "warning")
+    return redirect(url_for('admin_login'))
+
+# 403 - Forbidden
+@app.errorhandler(403)
+def forbidden(error):
+    flash("You do not have permission to access this page.", "warning")
+    return redirect(url_for('index'))
+
+# 404 - Not Found
+@app.errorhandler(404)
+def not_found(error):
+    flash("The page you’re looking for doesn’t exist.", "warning")
+    return redirect(url_for('index'))
+
+# 405 - Method Not Allowed
+@app.errorhandler(405)
+def method_not_allowed(error):
+    flash("Invalid request method.", "danger")
+    return redirect(url_for('index'))
+
+# 408 - Request Timeout
+@app.errorhandler(408)
+def request_timeout(error):
+    flash("Request timed out. Please try again.", "warning")
+    return redirect(url_for('index'))
+
+# 413 - Payload Too Large
+@app.errorhandler(413)
+def payload_too_large(error):
+    flash("Uploaded file is too large.", "danger")
+    return redirect(request.referrer or url_for('index'))
+
+# 429 - Too Many Requests
+@app.errorhandler(429)
+def too_many_requests(error):
+    flash("Too many requests. Please slow down.", "warning")
+    return redirect(url_for('index'))
+
+# 500 - Internal Server Error
+@app.errorhandler(500)
+def internal_server_error(error):
+    flash("An unexpected error occurred. Our team has been notified.", "danger")
+    return redirect(url_for('index'))
+
+# 502 - Bad Gateway
+@app.errorhandler(502)
+def bad_gateway(error):
+    flash("Bad gateway error. Please try again later.", "danger")
+    return redirect(url_for('index'))
+
+# 503 - Service Unavailable
+@app.errorhandler(503)
+def service_unavailable(error):
+    flash("Service temporarily unavailable. Please check back soon.", "warning")
+    return redirect(url_for('index'))
+
+# Catch-all handler for unhandled exceptions (fallback)
+@app.errorhandler(Exception)
+def handle_exception(e):
+    if isinstance(e, HTTPException):
+        return e
+    flash("A system error occurred. Please try again or contact support.", "danger")
+    return redirect(url_for('index'))
