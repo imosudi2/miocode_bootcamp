@@ -19,95 +19,174 @@
       At MioCode, we bridge the gap between theory and practical experience. Our programs are led by seasoned academics and tech professionals, combining structured learning with real-world projects.
     </p>
     <p>
-      From foundational coding to advanced cloud and DevOps, you’ll gain the skills required to thrive in the global tech ecosystem.
+      From foundational coding to advanced cloud and DevOps, you'll gain the skills required to thrive in the global tech ecosystem.
     </p>
     <a href="#courses" class="cta-button">Start Your Journey</a>
   </div>
 </section>
 
 <section id="about" class="scroll-reveal">
-  <div class="about container">
-    <div style="text-align: center; margin-bottom: 2rem;">
-      <img src="{{ url_for('static', filename='images/miocode_logo.png')}}" alt="MioCode Logo" style="max-width: 180px; height: auto;" />
+  <div class="about container"> 
+
+    <!-- Title -->
+    <h2 class="section-title">Why MioCode Bootcamp?</h2>
+    <div class="row g-3">
+      <div class="col-md-4">
+        <!-- Logo -->
+        <img src="{{ url_for('static', filename='images/miocode_logo.png')}}" alt="MioCode Logo"
+           class="img-fluid" />
+      </div>
+      <div class="col-md-8 shadow p-3 mb-5 bg-body-tertiary rounded card">
+        <!-- Core Message -->
+        <p class="fade-in mt-3">
+          <strong>MioCode Bootcamp</strong> is more than just classes—it's your launchpad into tech. Whether you're just finishing secondary school, currently in university, or simply curious about the digital world, we've designed MioCode to take you from zero to job-ready.
+        </p>
+
+        <!-- Instructors -->
+        <p class="fade-in">
+          Our instructors are not just trainers—they're real-world developers, data scientists, and system engineers who actively work on projects across Africa. They teach with the same tools and techniques used in top companies.
+        </p>
+
+        <!-- Student-centred approach -->
+        <p class="fade-in">
+          You'll work on real projects, collaborate with peers, and get personal guidance every step of the way. With a flexible structure and modern tools, we help you learn faster, smarter, and better.
+        </p>
+      </div>
     </div>
 
-    <h2 class="section-title">About MioCode Bootcamp</h2>
+    <!-- Programs Offered -->
+    <div class="fade-in mt-4">
+      <p class="mb-3 fw-semibold text-dark">
+        <i class="bi bi-lightbulb-fill text-warning me-2"></i>
+        <strong>Explore our beginner-friendly tech tracks:</strong>
+      </p>
 
-    <p>
-      <strong>MioCode Bootcamp</strong> is your launchpad into tech. Whether you’re just out of secondary school, in university, or exploring your next step, we’ve built this platform to help you grow from beginner to job-ready tech talent.
-    </p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item bg-transparent border-0 ps-0">
+          🌐 <strong>Full Stack Web Development</strong>
+        </li>
+        <li class="list-group-item bg-transparent border-0 ps-0">
+          📱 <strong>Mobile App Development</strong>
+        </li>
+        <li class="list-group-item bg-transparent border-0 ps-0">
+          📊 <strong>Data Science & Analytics</strong>
+        </li>
+        <li class="list-group-item bg-transparent border-0 ps-0">
+          🔐 <strong>Cybersecurity</strong>
+        </li>
+        <li class="list-group-item bg-transparent border-0 ps-0">
+          ☁️ <strong>Cloud & Edge Computing</strong>
+        </li>
+        <li class="list-group-item bg-transparent border-0 ps-0">
+          🤖 <strong>AI & Machine Learning</strong>
+        </li>
+      </ul>
+    </div>
 
-    <p>
-      Our instructors aren’t just teachers—they’re practising engineers and tech professionals with years of experience across Africa’s leading projects. They’ll guide you every step of the way, using real-world tools and projects you can show off in your portfolio.
-    </p>
 
-    <p>
-      With flexible learning schedules, collaborative projects, and personalised support, MioCode makes it easy for students like you to build skills that matter.
-    </p>
-
-    <p>We offer beginner-friendly pathways in:</p>
-
-    <ul class="mt-3">
-      <li>Full Stack Web Development</li>
-      <li>Mobile App Development</li>
-      <li>Data Science & Analytics</li>
-      <li>Cybersecurity</li>
-      <li>Cloud & Edge Computing</li>
-      <li>AI & Machine Learning</li>
-    </ul>
-
-    <p class="mt-4 text-center fw-semibold text-primary">
-      No matter your background, if you’re curious and ready to learn—<br>
-      MioCode Bootcamp is where your tech journey begins.
+    <!-- Call to Action -->
+    <p class="mt-5 text-center fw-semibold" style="color: var(--primary); font-size: 1.1rem;">
+      🎯 No tech background? No problem.<br>
+      If you're eager to learn, MioCode is where your tech journey begins.
     </p>
   </div>
 </section>
 
 
 
+
 <section id="courses" class="scroll-reveal">
   <h2 class="section-title">Our Programs</h2>
-  <div class="cards-grid">
+  <div class="cards-grid" id="skills">
+
+    <!-- Full Stack Web Development -->
     <div class="card">
-      <h3>🖥️ System Administration</h3>
+      <h3>🌐 Full Stack Web Development</h3>
       <ul>
-        <li>Introduction to Operating Systems</li>
-        <li>Linux Installation (Desktop and Server)</li>
-        <li>Advanced Linux Commands</li>
-        <li>Linux Networking and Firewall</li>
-        <li>System Management & Monitoring</li>
-        <li>Open Source Server Suites</li>
-        <li>Virtualization & Containers</li>
+        <li>HTML5, CSS3 & JavaScript ES6+</li>
+        <li>Responsive Design with Bootstrap</li>
+        <li>Modern Frontend with Bootstrap 5</li>
+        <li>Backend Development using Python & Flask</li>
+        <li>Databases: MySQL, PostgreSQL</li>
+        <li>API Development (REST & GraphQL)</li>
+        <li>Git & GitHub Collaboration</li>
       </ul>
     </div>
 
-    <div class="card" id="skills">
-      <h3>💻 Software Development</h3>
+    <!-- Data Science & Analytics -->
+    <div class="card">
+      <h3>📊 Data Science & Analytics</h3>
       <ul>
-        <li>HTML5, Bootstrap, JavaScript ES6+</li>
-        <li>Advanced Linux Commands</li>
-        <li>Version Control with Git</li>
-        <li>Python & Flask Framework</li>
-        <li>Bootstrap 5 & Modern CSS</li>
-        <li>Database Management</li>
-        <li>Web App Development & Deployment</li>
-        <li>API Design & Integration</li>
+        <li>Data Cleaning with Pandas</li>
+        <li>Exploratory Data Analysis</li>
+        <li>Data Visualisation using Matplotlib & Seaborn</li>
+        <li>SQL for Data Retrieval</li>
+        <li>Statistics for Data Science</li>
+        <li>Machine Learning with scikit-learn</li>
+        <li>Real-World Data Projects</li>
+        <li>Python for Data Automation</li>
       </ul>
     </div>
 
+    <!-- Mobile App Development -->
+    <div class="card">
+      <h3>📱 Mobile App Development</h3>
+      <ul>
+        <li>Mobile UI/UX Principles</li>
+        <li>Dart Programming Language</li>
+        <li>Cross-Platform Development with Flutter</li>
+        <li>State Management (Provider, Riverpod)</li>
+        <li>API Integration & JSON Parsing</li>
+        <li>Firebase Authentication</li>
+        <li>Local Storage & SQLite</li>
+        <li>Publishing to Play Store</li>
+      </ul>
+    </div>
+
+    <!-- Cybersecurity -->
+    <div class="card">
+      <h3>🔐 Cybersecurity</h3>
+      <ul>
+        <li>Cyber Threat Landscape</li>
+        <li>System & Network Security</li>
+        <li>Ethical Hacking Essentials</li>
+        <li>Vulnerability Scanning Tools</li>
+        <li>Cryptography Fundamentals</li>
+        <li>Web Application Security</li>
+        <li>Incident Response Planning</li>
+        <li>Cyber Hygiene for Developers</li>
+      </ul>
+    </div>
+
+    <!-- Cloud Computing -->
     <div class="card">
       <h3>☁️ Cloud & Edge Computing</h3>
       <ul>
-        <li>Cloud Platform Fundamentals</li>
-        <li>Docker & Kubernetes</li>
-        <li>Edge Computing Architecture</li>
-        <li>Microservices Design</li>
-        <li>CI/CD Pipeline Setup</li>
-        <li>Infrastructure as Code</li>
-        <li>Monitoring & Observability</li>
-        <li>Security Best Practices</li>
+        <li>Cloud Service Models (IaaS, PaaS, SaaS)</li>
+        <li>Docker & Kubernetes Basics</li>
+        <li>Serverless Functions</li>
+        <li>CI/CD Pipelines</li>
+        <li>Cloud Provider Overview</li>
+        <li>Monitoring & Logging</li>
+        <li>Infrastructure as Code (IaC)</li>
+        <li>Edge Deployment Scenarios</li>
       </ul>
     </div>
+
+    <!-- AI & Machine Learning -->
+    <div class="card">
+      <h3>🤖 AI & Machine Learning</h3>
+      <ul>
+        <li>Python for AI</li>
+        <li>Linear Regression & Classification</li>
+        <li>Neural Networks with TensorFlow</li>
+        <li>Model Training & Evaluation</li>
+        <li>Model Deployment with FastAPI</li>
+        <li>AI Ethics & Bias</li>
+        <li>Capstone AI Projects</li>
+      </ul>
+    </div>
+
   </div>
 </section>
 
@@ -243,11 +322,11 @@
   <div class="registration-form p-5">
       
   <div class="text-center mb-4">
-      <h1 class="display-5 fw-bold text-primary mb-3">
-                          <i class="fas fa-graduation-cap me-3"></i>
-                          Bootcamp Registration
-      </h1>
-      <p class="lead text-muted">Join MioCode intensive program and transform your career</p>
+    <h2 class="section-title">
+      <i class="fas fa-graduation-cap me-3"></i>
+      Bootcamp Registration
+    </h2>
+    <p class="lead text-muted">Join MioCode intensive program and transform your career</p>
   </div>
 
   <!-- Success/Error Messages -->
