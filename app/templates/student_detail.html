@@ -1,22 +1,141 @@
 {% extends "base.html" %}
 
 {% block main_body %}
-<div class="container mt-5 py-5"   style="padding-top: 7.5rem;">
-  <h2>{{ student.first_name }} {{ student.last_name }}</h2>
-  <ul class="list-group mt-3">
-    <li class="list-group-item"><strong>Email:</strong> {{ student.email }}</li>
-    <li class="list-group-item"><strong>Phone:</strong> {{ student.phone }}</li>
-    <li class="list-group-item"><strong>WhatsApp:</strong> {{ student.whatsapp }}</li>
-    <li class="list-group-item"><strong>Preferred Contact:</strong> {{ student.contact_method }}</li>
-    <li class="list-group-item"><strong>Address:</strong> {{ student.address }}</li>
-    <li class="list-group-item"><strong>Program:</strong> {{ student.program }}</li>
-    <li class="list-group-item"><strong>Schedule:</strong> {{ student.schedule }}</li>
-    <li class="list-group-item"><strong>Start Date:</strong> {{ student.start_date }}</li>
-    <li class="list-group-item"><strong>Payment Plan:</strong> {{ student.payment_plan }}</li>
-    <li class="list-group-item"><strong>Education:</strong> {{ student.education }}</li>
-    <li class="list-group-item"><strong>Experience:</strong> {{ student.experience }}</li>
-    <li class="list-group-item"><strong>Goals:</strong> {{ student.goals }}</li>
-    <li class="list-group-item"><strong>Submitted At:</strong> {{ student.submitted_at }}</li>
-  </ul>
-</div>
+    <div class="container mt-5 pt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                <div class="card shadow-sm">
+                    <div class="card-header text-white"  style="background: linear-gradient(to right, #667eea, #764ba2);">
+                        <h2 class="card-title mb-0">{{ student.first_name }} {{ student.last_name }}</h2>
+                    </div>
+                    <div class="card-body">
+                        <!-- Contact Information Section -->
+                        <div class="mb-4">
+                            <h5 class="text-primary border-bottom pb-2 mb-3">Contact Information</h5>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="bi bi-envelope-fill text-muted me-2"></i>
+                                        <span class="fw-semibold me-2">Email:</span>
+                                        <span>{{ student.email }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="bi bi-telephone-fill text-muted me-2"></i>
+                                        <span class="fw-semibold me-2">Phone:</span>
+                                        <span>{{ student.phone }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="bi bi-whatsapp text-success me-2"></i>
+                                        <span class="fw-semibold me-2">WhatsApp:</span>
+                                        <span>{{ student.whatsapp }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="bi bi-chat-dots-fill text-muted me-2"></i>
+                                        <span class="fw-semibold me-2">Preferred Contact:</span>
+                                        <span class="badge bg-info">{{ student.contact_method }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="d-flex align-items-start mb-2">
+                                        <i class="bi bi-geo-alt-fill text-muted me-2 mt-1"></i>
+                                        <span class="fw-semibold me-2">Address:</span>
+                                        <span>{{ student.address }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Program Information Section -->
+                        <div class="mb-4">
+                            <h5 class="text-primary border-bottom pb-2 mb-3">Program Information</h5>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="bi bi-book-fill text-muted me-2"></i>
+                                        <span class="fw-semibold me-2">Program:</span>
+                                        <span class="badge bg-success">{{ student.program }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="bi bi-calendar-week-fill text-muted me-2"></i>
+                                        <span class="fw-semibold me-2">Schedule:</span>
+                                        <span>{{ student.schedule }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="bi bi-calendar-event-fill text-muted me-2"></i>
+                                        <span class="fw-semibold me-2">Start Date:</span>
+                                        <span>{{ student.start_date }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="bi bi-credit-card-fill text-muted me-2"></i>
+                                        <span class="fw-semibold me-2">Payment Plan:</span>
+                                        <span class="badge bg-warning text-dark">{{ student.payment_plan }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Background Information Section -->
+                        <div class="mb-4">
+                            <h5 class="text-primary border-bottom pb-2 mb-3">Background Information</h5>
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <div class="d-flex align-items-start mb-2">
+                                            <i class="bi bi-mortarboard-fill text-muted me-2 mt-1"></i>
+                                            <span class="fw-semibold me-2">Education:</span>
+                                        </div>
+                                        <div class="ms-4">
+                                            <p class="text-muted mb-0">{{ student.education }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <div class="d-flex align-items-start mb-2">
+                                            <i class="bi bi-briefcase-fill text-muted me-2 mt-1"></i>
+                                            <span class="fw-semibold me-2">Experience:</span>
+                                        </div>
+                                        <div class="ms-4">
+                                            <p class="text-muted mb-0">{{ student.experience }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <div class="d-flex align-items-start mb-2">
+                                            <i class="bi bi-target text-muted me-2 mt-1"></i>
+                                            <span class="fw-semibold me-2">Goals:</span>
+                                        </div>
+                                        <div class="ms-4">
+                                            <p class="text-muted mb-0">{{ student.goals }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submission Information -->
+                        <div class="border-top pt-3">
+                            <small class="text-muted">
+                                <i class="bi bi-clock-fill me-1"></i>
+                                Submitted on {{ student.submitted_at }}
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
