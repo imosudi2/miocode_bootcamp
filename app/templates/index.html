@@ -24,65 +24,113 @@
     <a href="#courses" class="cta-button">Start Your Journey</a>
   </div>
 </section>
-
-<section id="about" class="scroll-reveal">
-  <div class="about container"> 
-
+<section id="about" class="scroll-reveal py-5">
+  <div class="about container">
     <!-- Title -->
-    <h2 class="section-title">Why MioCode Bootcamp?</h2>
-    <div class="row g-3">
-      <div class="col-md-4">
+    <h2 class="section-title text-center mb-5">Why MioCode Bootcamp?</h2>
+    
+    <div class="row g-4 align-items-center mb-5">
+      <div class="col-lg-4 col-md-5 text-center">
         <!-- Logo -->
-        <img src="{{ url_for('static', filename='images/miocode_logo.png')}}" alt="MioCode Logo"
-           class="img-fluid" />
+        <img src="{{ url_for('static', filename='images/miocode_logo.png')}}" 
+             alt="MioCode Logo" 
+             class="img-fluid rounded shadow-sm" 
+             style="max-height: 200px;" />
       </div>
-      <div class="col-md-8 shadow p-3 mb-5 bg-body-tertiary rounded card">
-        <!-- Core Message -->
-        <p class="fade-in mt-3">
-          <strong>MioCode Bootcamp</strong> is more than just classes—it's your launchpad into tech. Whether you're just finishing secondary school, currently in university, or simply curious about the digital world, we've designed MioCode to take you from zero to job-ready.
-        </p>
+      
+      <div class="col-lg-8 col-md-7">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <!-- Core Message -->
+            <p class="fade-in mb-3">
+              <strong class="text-primary">MioCode Bootcamp</strong> is more than just classes—it's your launchpad into tech. Whether you're just finishing secondary school, currently in university, or simply curious about the digital world, we've designed MioCode to take you from zero to job-ready.
+            </p>
 
-        <!-- Instructors -->
-        <p class="fade-in">
-          Our instructors are not just trainers—they're real-world developers, data scientists, and system engineers who actively work on projects across Africa. They teach with the same tools and techniques used in top companies.
-        </p>
+            <!-- Instructors -->
+            <p class="fade-in mb-3">
+              Our instructors are not just trainers—they're real-world developers, data scientists, and system engineers who actively work on projects across Africa. They teach with the same tools and techniques used in top companies.
+            </p>
 
-        <!-- Student-centred approach -->
-        <p class="fade-in">
-          You'll work on real projects, collaborate with peers, and get personal guidance every step of the way. With a flexible structure and modern tools, we help you learn faster, smarter, and better.
-        </p>
+            <!-- Student-centred approach -->
+            <p class="fade-in mb-0">
+              You'll work on real projects, collaborate with peers, and get personal guidance every step of the way. With a flexible structure and modern tools, we help you learn faster, smarter, and better.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- Programs Offered -->
-    <div class="fade-in mt-4">
-      <p class="mb-3 fw-semibold text-dark">
-        <i class="bi bi-lightbulb-fill text-warning me-2"></i>
-        <strong>Explore our beginner-friendly tech tracks:</strong>
-      </p>
+    <div class="fade-in">
+      <div class="text-center mb-4">
+        <h3 class="h4 text-primary mb-2">
+          <i class="bi bi-lightbulb-fill text-warning me-2"></i>
+          Explore our beginner-friendly tech tracks:
+        </h3>
+      </div>
 
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item bg-transparent border-0 ps-0">
-          🌐 <strong>Full Stack Web Development</strong>
-        </li>
-        <li class="list-group-item bg-transparent border-0 ps-0">
-          📱 <strong>Mobile App Development</strong>
-        </li>
-        <li class="list-group-item bg-transparent border-0 ps-0">
-          📊 <strong>Data Science & Analytics</strong>
-        </li>
-        <li class="list-group-item bg-transparent border-0 ps-0">
-          🔐 <strong>Cybersecurity</strong>
-        </li>
-        <li class="list-group-item bg-transparent border-0 ps-0">
-          ☁️ <strong>Cloud & Edge Computing</strong>
-        </li>
-        <li class="list-group-item bg-transparent border-0 ps-0">
-          🤖 <strong>AI & Machine Learning</strong>
-        </li>
-      </ul>
+      <div class="row g-3">
+        <div class="col-lg-6">
+          <div class="d-flex align-items-center p-3 bg-light rounded-3 h-100">
+            <span class="fs-3 me-3">🌐</span>
+            <div>
+              <h5 class="mb-1">Full Stack Web Development</h5>
+              <small class="text-muted">Build complete web applications</small>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <div class="d-flex align-items-center p-3 bg-light rounded-3 h-100">
+            <span class="fs-3 me-3">📱</span>
+            <div>
+              <h5 class="mb-1">Mobile App Development</h5>
+              <small class="text-muted">Create Android/iOS apps</small>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <div class="d-flex align-items-center p-3 bg-light rounded-3 h-100">
+            <span class="fs-3 me-3">📊</span>
+            <div>
+              <h5 class="mb-1">Data Science & Analytics</h5>
+              <small class="text-muted">Turn data into insights</small>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <div class="d-flex align-items-center p-3 bg-light rounded-3 h-100">
+            <span class="fs-3 me-3">🔐</span>
+            <div>
+              <h5 class="mb-1">Cybersecurity</h5>
+              <small class="text-muted">Protect digital systems</small>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <div class="d-flex align-items-center p-3 bg-light rounded-3 h-100">
+            <span class="fs-3 me-3">☁️</span>
+            <div>
+              <h5 class="mb-1">Cloud & Edge Computing</h5>
+              <small class="text-muted">Build scalable cloud solutions</small>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <div class="d-flex align-items-center p-3 bg-light rounded-3 h-100">
+            <span class="fs-3 me-3">🤖</span>
+            <div>
+              <h5 class="mb-1">AI & Machine Learning</h5>
+              <small class="text-muted">Build intelligent systems</small>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
 
     <!-- Call to Action -->
     <p class="mt-5 text-center fw-semibold" style="color: var(--primary); font-size: 1.1rem;">
@@ -91,8 +139,6 @@
     </p>
   </div>
 </section>
-
-
 
 
 <section id="courses" class="scroll-reveal">
