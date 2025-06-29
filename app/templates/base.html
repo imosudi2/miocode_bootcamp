@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,22 +68,33 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-  <!-- Navbar -->
+    <!-- Navbar -->
   <nav id="navbar" aria-label="Main navigation">
     <div class="nav-container">
       <a href="/" class="logo" aria-label="MioCode Home">
-        <img src="{{ url_for('static', filename='images/miocode_logo.png')}}"  alt="MioCode Logo" style="max-width: 85px; height: auto;" />
+        <img src="{{ url_for('static', filename='images/miocode_logo.png')}}" alt="MioCode Logo" style="max-width: 85px; height: auto;" />
       </a>
+
+      {% if session.get('admin_user') %}
+      <!-- Admin Navigation -->
       <ul class="nav-links">
-        <li><a href="#home"><i class="bi bi-house-door-fill"></i>Home</a></li>
-        <li><a href="#about"><i class="bi bi-info-circle-fill"></i>About</a></li>
-        <li><a href="#courses"><i class="bi bi-book-fill"></i>Courses</a></li>
-        <li><a href="#skills"><i class="bi bi-tools"></i>Skills</a></li>
-        <li><a href="#register"><i class="bi bi-person-lines-fill"></i>Register</a></li>
-        <li><a href="#contact"><i class="bi bi-envelope-fill"></i>Contact</a></li>
-      </ul>      
+        <li><a href="{{ url_for('admin_dashboard') }}"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+        <li><a href="{{ url_for('admin_logout') }}"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+      </ul>
+      {% else %}
+      <!-- Public Navigation -->
+      <ul class="nav-links">
+        <li><a href="#home"><i class="bi bi-house-door-fill"></i> Home</a></li>
+        <li><a href="#about"><i class="bi bi-info-circle-fill"></i> About</a></li>
+        <li><a href="#courses"><i class="bi bi-book-fill"></i> Courses</a></li>
+        <li><a href="#skills"><i class="bi bi-tools"></i> Skills</a></li>
+        <li><a href="#register"><i class="bi bi-person-lines-fill"></i> Register</a></li>
+        <li><a href="#contact"><i class="bi bi-envelope-fill"></i> Contact</a></li>
+      </ul>
+      {% endif %}
     </div>
   </nav>
+
 
   <!-- Main Content Wrapper -->
   <main class="flex-grow-1">

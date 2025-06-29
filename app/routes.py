@@ -213,6 +213,20 @@ def admin_dashboard():
 
     return render_template("admin.html", submissions=submissions, admin_user=session.get('admin_user'))
 
+@app.route('/admin/student/<email>')
+def view_student_by_email(email):
+    submissions = []
+    if os.path.exists(file_path):
+        with open(file_path, "r", encoding="utf-8") as f:
+            submissions = json.load(f)
+
+    student = next((s for s in submissions if s["email"] == email), None)
+    if not student:
+        abort(404)
+
+    return render_template("student_detail.html", student=student)
+
+
 @app.route('/admin/login', methods=['GET', 'POST'])
 def admin_login():
     users = load_users()

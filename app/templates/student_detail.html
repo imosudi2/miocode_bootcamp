@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block main_body %}
+<div class="container mt-5 py-5"   style="padding-top: 7.5rem;">
+  <h2>{{ student.first_name }} {{ student.last_name }}</h2>
+  <ul class="list-group mt-3">
+    <li class="list-group-item"><strong>Email:</strong> {{ student.email }}</li>
+    <li class="list-group-item"><strong>Phone:</strong> {{ student.phone }}</li>
+    <li class="list-group-item"><strong>WhatsApp:</strong> {{ student.whatsapp }}</li>
+    <li class="list-group-item"><strong>Preferred Contact:</strong> {{ student.contact_method }}</li>
+    <li class="list-group-item"><strong>Address:</strong> {{ student.address }}</li>
+    <li class="list-group-item"><strong>Program:</strong> {{ student.program }}</li>
+    <li class="list-group-item"><strong>Schedule:</strong> {{ student.schedule }}</li>
+    <li class="list-group-item"><strong>Start Date:</strong> {{ student.start_date }}</li>
+    <li class="list-group-item"><strong>Payment Plan:</strong> {{ student.payment_plan }}</li>
+    <li class="list-group-item"><strong>Education:</strong> {{ student.education }}</li>
+    <li class="list-group-item"><strong>Experience:</strong> {{ student.experience }}</li>
+    <li class="list-group-item"><strong>Goals:</strong> {{ student.goals }}</li>
+    <li class="list-group-item"><strong>Submitted At:</strong> {{ student.submitted_at }}</li>
+  </ul>
+</div>
+{% endblock %}
