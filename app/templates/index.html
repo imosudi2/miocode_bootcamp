@@ -25,35 +25,32 @@
   </div>
 </section>
 <section id="about" class="scroll-reveal py-5">
-  <div class="about container">
+  <div class="container">
+
     <!-- Title -->
-    <h2 class="section-title text-center mb-5">Why MioCode Bootcamp?</h2>
-    
-    <div class="row g-4 align-items-center mb-5">
-      <div class="col-lg-4 col-md-5 text-center">
-        <!-- Logo -->
+    <h2 class="section-title text-center mb-4">Why MioCode Bootcamp?</h2>
+
+    <div class="row g-4 align-items-center mb-4">
+      <!-- Logo Column -->
+      <div class="col-12 col-md-5 text-center">
         <img src="{{ url_for('static', filename='images/miocode_logo.png')}}" 
              alt="MioCode Logo" 
              class="img-fluid rounded shadow-sm" 
-             style="max-height: 200px;" />
+             style="max-height: 180px;" />
       </div>
-      
-      <div class="col-lg-8 col-md-7">
-        <div class="card border-0 shadow-sm">
-          <div class="card-body p-4">
-            <!-- Core Message -->
-            <p class="fade-in mb-3">
-              <strong class="text-primary">MioCode Bootcamp</strong> is more than just classes—it's your launchpad into tech. Whether you're just finishing secondary school, currently in university, or simply curious about the digital world, we've designed MioCode to take you from zero to job-ready.
-            </p>
 
-            <!-- Instructors -->
+      <!-- Description Column -->
+      <div class="col-12 col-md-7">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body p-3 p-md-4">
             <p class="fade-in mb-3">
-              Our instructors are not just trainers—they're real-world developers, data scientists, and system engineers who actively work on projects across Africa. They teach with the same tools and techniques used in top companies.
+              <strong class="text-primary">MioCode Bootcamp</strong> is more than just classes—it's your launchpad into tech. Whether you're just finishing secondary school, in university, or curious about the digital world, MioCode is designed to take you from zero to job-ready.
             </p>
-
-            <!-- Student-centred approach -->
+            <p class="fade-in mb-3">
+              Our instructors are active developers, data scientists, and engineers working on real projects across Africa. They teach the same tools and techniques used by top companies.
+            </p>
             <p class="fade-in mb-0">
-              You'll work on real projects, collaborate with peers, and get personal guidance every step of the way. With a flexible structure and modern tools, we help you learn faster, smarter, and better.
+              Learn by doing—real projects, peer collaboration, and personal guidance. With a flexible structure and hands-on learning, we help you learn faster and smarter.
             </p>
           </div>
         </div>
@@ -61,86 +58,44 @@
     </div>
 
     <!-- Programs Offered -->
-    <div class="fade-in">
-      <div class="text-center mb-4">
-        <h3 class="h4 text-primary mb-2">
-          <i class="bi bi-lightbulb-fill text-warning me-2"></i>
-          Explore our beginner-friendly tech tracks:
-        </h3>
-      </div>
+    <div class="fade-in mt-5">
+      <h3 class="h5 text-primary text-center mb-4">
+        <i class="bi bi-lightbulb-fill text-warning me-2"></i>
+        Explore Our Beginner-Friendly Tech Tracks
+      </h3>
 
       <div class="row g-3">
-        <div class="col-lg-6">
-          <div class="d-flex align-items-center p-3 bg-light rounded-3 h-100">
-            <span class="fs-3 me-3">🌐</span>
+        {% set tracks = [
+          ("🌐", "Full Stack Web Development", "Build complete web apps"),
+          ("📱", "Mobile App Development", "Create Android/iOS apps"),
+          ("📊", "Data Science & Analytics", "Turn data into insights"),
+          ("🔐", "Cybersecurity", "Protect digital systems"),
+          ("☁️", "Cloud & Edge Computing", "Build scalable cloud solutions"),
+          ("🤖", "AI & Machine Learning", "Build intelligent systems")
+        ] %}
+        {% for icon, title, desc in tracks %}
+        <div class="col-12 col-sm-6">
+          <div class="d-flex align-items-start p-3 bg-light rounded-3 h-100">
+            <span class="fs-3 me-3">{{ icon }}</span>
             <div>
-              <h5 class="mb-1">Full Stack Web Development</h5>
-              <small class="text-muted">Build complete web applications</small>
+              <h6 class="mb-1 fw-semibold">{{ title }}</h6>
+              <small class="text-muted">{{ desc }}</small>
             </div>
           </div>
         </div>
-        
-        <div class="col-lg-6">
-          <div class="d-flex align-items-center p-3 bg-light rounded-3 h-100">
-            <span class="fs-3 me-3">📱</span>
-            <div>
-              <h5 class="mb-1">Mobile App Development</h5>
-              <small class="text-muted">Create Android/iOS apps</small>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-lg-6">
-          <div class="d-flex align-items-center p-3 bg-light rounded-3 h-100">
-            <span class="fs-3 me-3">📊</span>
-            <div>
-              <h5 class="mb-1">Data Science & Analytics</h5>
-              <small class="text-muted">Turn data into insights</small>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-lg-6">
-          <div class="d-flex align-items-center p-3 bg-light rounded-3 h-100">
-            <span class="fs-3 me-3">🔐</span>
-            <div>
-              <h5 class="mb-1">Cybersecurity</h5>
-              <small class="text-muted">Protect digital systems</small>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-lg-6">
-          <div class="d-flex align-items-center p-3 bg-light rounded-3 h-100">
-            <span class="fs-3 me-3">☁️</span>
-            <div>
-              <h5 class="mb-1">Cloud & Edge Computing</h5>
-              <small class="text-muted">Build scalable cloud solutions</small>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-lg-6">
-          <div class="d-flex align-items-center p-3 bg-light rounded-3 h-100">
-            <span class="fs-3 me-3">🤖</span>
-            <div>
-              <h5 class="mb-1">AI & Machine Learning</h5>
-              <small class="text-muted">Build intelligent systems</small>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
 
     <!-- Call to Action -->
-    <p class="mt-5 text-center fw-semibold" style="color: var(--primary); font-size: 1.1rem;">
-      🎯 No tech background? No problem.<br>
-      If you're eager to learn, MioCode is where your tech journey begins.
-    </p>
+    <div class="text-center mt-5">
+      <p class="fw-semibold text-primary fs-6">
+        🎯 No tech background? No problem.<br>
+        If you're eager to learn, <strong>MioCode</strong> is where your journey begins.
+      </p>
+    </div>
   </div>
 </section>
-
-
 <section id="courses" class="scroll-reveal">
   <h2 class="section-title">Our Programs</h2>
   <div class="cards-grid" id="skills">
