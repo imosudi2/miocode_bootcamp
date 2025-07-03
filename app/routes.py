@@ -133,6 +133,25 @@ def index():
                     except (json.JSONDecodeError, FileNotFoundError):
                         submissions = []
 
+                # Check for duplicate email or WhatsApp number
+                for existing in submissions:
+                    if existing.get("email") == data["email"]:
+                        error_message = "An application with this email address already exists."
+                        if is_ajax:
+                            return jsonify({'success': False, 'message': error_message}), 400
+                        else:
+                            flash(error_message, "danger")
+                            return redirect(url_for('index'))
+                    
+                    if existing.get("whatsapp") == data["whatsapp"]:
+                        error_message = "An application with this WhatsApp number already exists."
+                        if is_ajax:
+                            return jsonify({'success': False, 'message': error_message}), 400
+                        else:
+                            flash(error_message, "danger")
+                            return redirect(url_for('index'))
+
+                
                 # Add new submission
                 submissions.append(data)
 
@@ -225,7 +244,6 @@ def view_student_by_email(email):
         abort(404)
 
     return render_template("student_detail.html", student=student)
-
 
 @app.route('/admin/login', methods=['GET', 'POST'])
 def admin_login():
