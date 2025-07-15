@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% block main_body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1>Questionnaire Details</h1>
+                <a href="{{ url_for('admin_questionnaire') }}" class="btn btn-outline-secondary">
+                    &larr; Back to Questionnaire List
+                </a>
+            </div>
+            
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-header text-white"  style="background: linear-gradient(to right, #667eea, #764ba2);">
+                        <h2 class="card-title mb-0">{{ questionnaire.full_name }}</h2>
+                    </div>
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="bi bi-envelope-fill text-muted me-2"></i>
+                        <span class="fw-semibold me-2">Email:</span>
+                        <span>{{ questionnaire.email }}</span>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-telephone-fill text-muted me-2"></i>
+                                <span class="fw-semibold me-2">Phone:</span>
+                                <span>{{ questionnaire.phone }}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-code-slash text-muted me-2"></i>
+                                <span class="fw-semibold me-2">Program:</span>
+                                <span>{{ questionnaire.program }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-pc-display text-muted me-2"></i>
+                                <span class="fw-semibold me-2">Operating System:</span>
+                                <span>{{ questionnaire.os }}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-file-code text-muted me-2"></i>
+                                <span class="fw-semibold me-2">Python Installed:</span>
+                                {% if questionnaire.python_installed == 'yes' %}
+                                    <span class="badge bg-success">Yes</span>
+                                {% else %}
+                                    <span class="badge bg-danger">No</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-terminal text-muted me-2"></i>
+                                <span class="fw-semibold me-2">CLI Familiarity:</span>
+                                {% if questionnaire.cli_familiarity == 'yes' %}
+                                    <span class="badge bg-success">Yes</span>
+                                {% else %}
+                                    <span class="badge bg-danger">No</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-check-circle text-muted me-2"></i>
+                                <span class="fw-semibold me-2">Start Approval:</span>
+                                {% if questionnaire.start_approval %}
+                                    <span class="badge bg-success">Approved</span>
+                                {% else %}
+                                    <span class="badge bg-warning">Pending</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-cpu text-muted me-2"></i>
+                            <span class="fw-semibold">System Specifications:</span>
+                        </div>
+                        <p class="mt-1">{{ questionnaire.specs }}</p>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-tools text-muted me-2"></i>
+                            <span class="fw-semibold">Tools Used:</span>
+                        </div>
+                        <div class="mt-1">
+                            {% if questionnaire.tools_used %}
+                                {% for tool in questionnaire.tools_used %}
+                                    <span class="badge bg-secondary me-1">{{ tool }}</span>
+                                {% endfor %}
+                            {% else %}
+                                <span class="text-muted">None specified</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-bullseye text-muted me-2"></i>
+                            <span class="fw-semibold">Goals:</span>
+                        </div>
+                        <p class="mt-1">{{ questionnaire.goals }}</p>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-lightbulb text-muted me-2"></i>
+                            <span class="fw-semibold">Project Interest:</span>
+                        </div>
+                        <p class="mt-1">{{ questionnaire.project_interest }}</p>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-exclamation-triangle text-muted me-2"></i>
+                            <span class="fw-semibold">Challenges:</span>
+                        </div>
+                        <p class="mt-1">{{ questionnaire.challenges }}</p>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-clock text-muted me-2"></i>
+                            <span class="fw-semibold">Submitted At:</span>
+                        </div>
+                        <p class="mt-1">{{ questionnaire.submitted_at|default('—') }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

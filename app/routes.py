@@ -234,6 +234,27 @@ def admin_dashboard():
 
     return render_template("admin.html", submissions=submissions, admin_user=session.get('admin_user'))
 
+@app.route('/admin/questionnaire')
+def admin_questionnaire():
+    if 'admin_user' not in session:
+        flash("You must be logged in to access the admin questionnaire.")
+        return redirect(url_for('admin_login'))
+    
+    questionnaire_responses = []
+    #questionnaire_file_path = questionnaire_file_path #"questionnaire.json"
+    
+    try:
+        if os.path.exists(questionnaire_file_path):
+            with open(questionnaire_file_path, "r", encoding="utf-8") as f:
+                questionnaire_responses = json.load(f)
+    except Exception as e:
+        flash(f"Error loading questionnaire responses: {e}")
+        print(f"Error loading questionnaire responses: {e}")
+    
+    return render_template("admin_questionnaire.html", 
+                         questionnaire_responses=questionnaire_responses, 
+                         admin_user=session.get('admin_user'))
+    
 @app.route('/admin/student/<email>')
 def view_student_by_email(email):
     submissions = []
@@ -246,6 +267,25 @@ def view_student_by_email(email):
         abort(404)
 
     return render_template("student_detail.html", student=student)
+
+@app.route('/admin/questionnaire/<email>')
+def view_questionnaire_by_email(email):
+    if 'admin_user' not in session:
+        flash("You must be logged in to access questionnaire details.")
+        return redirect(url_for('admin_login'))
+    
+    questionnaire_responses = []
+    #questionnaire_file_path = "questionnaire.json"
+    
+    if os.path.exists(questionnaire_file_path):
+        with open(questionnaire_file_path, "r", encoding="utf-8") as f:
+            questionnaire_responses = json.load(f)
+
+    questionnaire = next((q for q in questionnaire_responses if q["email"] == email), None)
+    if not questionnaire:
+        abort(404)
+
+    return render_template("questionnaire_detail.html", questionnaire=questionnaire)
 
 @app.route('/admin/login', methods=['GET', 'POST'])
 def admin_login():
@@ -352,6 +392,7 @@ def questionnaire():
 
     return render_template('questionnaire.html', applicant_details=applicant_details)
 
+"""
 # 400 - Bad Request
 @app.errorhandler(400)
 def bad_request(error):
@@ -424,4 +465,4 @@ def handle_exception(e):
     if isinstance(e, HTTPException):
         return e
     flash("A system error occurred. Please try again or contact support.", "danger")
-    return redirect(url_for('index'))
+    return redirect(url_for('index'))"""
