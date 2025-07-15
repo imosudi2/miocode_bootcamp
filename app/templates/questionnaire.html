@@ -1,0 +1,287 @@
+{% extends "base.html" %}
+
+{% block main_body %}
+    <div class="container mt-5" style="padding-top: 3.5rem;">
+        <section>
+            <div class="row justify-content-center">
+                <div class="card shadow-lg border-0">
+                    <!-- Header -->
+                    <div class="hero-content text-white text-center p-5" style="background: linear-gradient(to right, #667eea, #764ba2);">
+                        <h2 class="fw-bold mb-3">Application Assessment</h2>
+                        <p class="lead mb-3">Join the next generation of developers</p>
+                    </div>
+                    
+                    <!-- Progress Bar -->
+                    <div class="px-4 py-2 bg-light">
+                        <div class="progress" style="height: 6px;">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: {% if applicant_details %}100{% else %}50{% endif %}%"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Form Body -->
+                    <div class="card-body p-4 p-md-5">
+                        <!-- Flash Messages -->
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                                {% for category, message in messages %}
+                                    <div class="alert alert-{{ 'danger' if category == 'error' else category }} alert-dismissible fade show" role="alert">
+                                        {{ message }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+
+                        {% if not applicant_details %}
+                            <!-- Email Lookup Section -->
+                            <div class="card mb-4 border-info border-opacity-25">
+                                <div class="card-header bg-info bg-opacity-10 border-info border-opacity-25">
+                                    <h5 class="card-title mb-0 text-info">
+                                        <i class="fas fa-search me-2"></i>Applicant Verification
+                                    </h5>
+                                </div>
+                                <div class="card-body p-4">
+                                    <p class="text-muted mb-4">Please enter your email address to verify your application and proceed with the assessment.</p>
+                                    <form method="POST" action="{{ url_for('questionnaire') }}">
+                                        <div class="row g-3">
+                                            <div class="col-md-8">
+                                                <div class="form-floating">
+                                                    <input type="email" name="lookup_email" class="form-control" id="lookup_email" placeholder="Enter your email address" required>
+                                                    <label for="lookup_email">Email Address *</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button type="submit" class="btn btn-info h-100 w-100">
+                                                    <i class="fas fa-search me-2"></i>Verify Application
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        {% else %}
+                            <!-- Questionnaire Form -->
+                            <form method="POST" action="{{ url_for('questionnaire') }}" novalidate>
+                                
+                                <!-- Personal Information Section -->
+                                <div class="card mb-4 border-primary border-opacity-25">
+                                    <div class="card-header bg-primary bg-opacity-10 border-primary border-opacity-25">
+                                        <h5 class="card-title mb-0 text-primary">
+                                            <i class="fas fa-user me-2"></i>Personal Information
+                                        </h5>
+                                    </div>
+                                    <div class="card-body p-4">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <div class="form-floating">
+                                                    <input type="text" name="full_name" readonly value="{{applicant_details.first_name}} {{applicant_details.last_name}}" class="form-control" id="full_name" placeholder="Full Name" required>
+                                                    <label for="full_name">Full Name *</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-floating">
+                                                    <input type="email" name="email" readonly value="{{applicant_details.email}}" class="form-control" id="email" placeholder="Email Address" required>
+                                                    <label for="email">Email Address *</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-floating">
+                                                    <input type="tel" name="phone" readonly value="{{applicant_details.whatsapp}}" class="form-control" id="phone" placeholder="Phone / WhatsApp Number" required>
+                                                    <label for="phone">Phone / WhatsApp Number *</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-floating">
+                                                    <select name="program" class="form-select" id="program" required>
+                                                        <option value="">Select your specialisation</option>
+                                                        <option value="web-dev">Frontend Web Development</option>
+                                                        <option value="mobile-dev">Mobile App Development</option>
+                                                        <!--option value="ai-ml">AI & Machine Learning</option>
+                                                        <option value="cybersecurity">Cybersecurity Engineering</option-->
+                                                        <option value="fullstack">Full Stack Development</option>
+                                                    </select>
+                                                    <label for="program">Programme of Interest *</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Technical Environment Section -->
+                                <div class="card mb-4 border-success border-opacity-25">
+                                    <div class="card-header bg-success bg-opacity-10 border-success border-opacity-25">
+                                        <h5 class="card-title mb-0 text-success">
+                                            <i class="fas fa-laptop-code me-2"></i>Technical Environment
+                                        </h5>
+                                    </div>
+                                    <div class="card-body p-4">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <div class="form-floating">
+                                                    <select name="os" class="form-select" id="os" required>
+                                                        <option value="">Select your operating system</option>
+                                                        <option value="ubuntu">Ubuntu (Recommended for Development)</option>
+                                                        <option value="windows">Windows 10/11</option>
+                                                        <option value="macos">macOS</option>
+                                                        <option value="other">Other Linux Distribution</option>
+                                                    </select>
+                                                    <label for="os">Primary Operating System *</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-floating">
+                                                    <input type="text" name="specs" class="form-control" id="specs" placeholder="e.g. 16GB RAM, Intel i7, 512GB SSD" required>
+                                                    <label for="specs">System Specifications (RAM, CPU, Storage) *</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mt-4">
+                                            <label class="form-label fw-bold">Python 3 Development Environment</label>
+                                            <div class="row g-2">
+                                                <div class="col-md-6">
+                                                    <div class="card h-100 border-success border-opacity-50">
+                                                        <div class="card-body text-center">
+                                                            <input class="form-check-input" type="radio" name="python_installed" id="python_yes" value="yes" required>
+                                                            <label class="form-check-label d-block mt-2" for="python_yes">
+                                                                <i class="fas fa-check-circle text-success fs-4 d-block mb-2"></i>
+                                                                <strong>Yes, installed and configured</strong>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="card h-100 border-danger border-opacity-50">
+                                                        <div class="card-body text-center">
+                                                            <input class="form-check-input" type="radio" name="python_installed" id="python_no" value="no">
+                                                            <label class="form-check-label d-block mt-2" for="python_no">
+                                                                <i class="fas fa-times-circle text-danger fs-4 d-block mb-2"></i>
+                                                                <strong>No, need setup assistance</strong>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mt-4">
+                                            <label class="form-label fw-bold">Command Line Interface Experience</label>
+                                            <div class="row g-2">
+                                                <div class="col-md-6">
+                                                    <div class="card h-100 border-primary border-opacity-50">
+                                                        <div class="card-body text-center">
+                                                            <input class="form-check-input" type="radio" name="cli_familiarity" id="cli_yes" value="yes" required>
+                                                            <label class="form-check-label d-block mt-2" for="cli_yes">
+                                                                <i class="fas fa-terminal text-primary fs-4 d-block mb-2"></i>
+                                                                <strong>Comfortable with terminal/command line</strong>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="card h-100 border-warning border-opacity-50">
+                                                        <div class="card-body text-center">
+                                                            <input class="form-check-input" type="radio" name="cli_familiarity" id="cli_no" value="no">
+                                                            <label class="form-check-label d-block mt-2" for="cli_no">
+                                                                <i class="fas fa-exclamation-triangle text-warning fs-4 d-block mb-2"></i>
+                                                                <strong>Limited or no experience</strong>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mt-4">
+                                            <label class="form-label fw-bold">Professional Development Tools Experience</label>
+                                            <div class="row g-2">
+                                                <div class="col-md-6">
+                                                    <div class="form-check p-3 border rounded">
+                                                        <input class="form-check-input" type="checkbox" name="tools_used" id="mysql" value="mysql">
+                                                        <label class="form-check-label" for="mysql">
+                                                            <i class="fas fa-database text-info me-2"></i>
+                                                            MySQL Database
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-check p-3 border rounded">
+                                                        <input class="form-check-input" type="checkbox" name="tools_used" id="flask" value="flask">
+                                                        <label class="form-check-label" for="flask">
+                                                            <i class="fab fa-python text-warning me-2"></i>
+                                                            Flask Framework
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-check p-3 border rounded">
+                                                        <input class="form-check-input" type="checkbox" name="tools_used" id="apache" value="apache">
+                                                        <label class="form-check-label" for="apache">
+                                                            <i class="fas fa-server text-danger me-2"></i>
+                                                            Apache Web Server
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-check p-3 border rounded">
+                                                        <input class="form-check-input" type="checkbox" name="tools_used" id="git" value="git">
+                                                        <label class="form-check-label" for="git">
+                                                            <i class="fab fa-git-alt text-success me-2"></i>
+                                                            Git Version Control
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Career Vision & Goals Section -->
+                                <div class="card mb-4 border-warning border-opacity-25">
+                                    <div class="card-header bg-warning bg-opacity-10 border-warning border-opacity-25">
+                                        <h5 class="card-title mb-0 text-warning-emphasis">
+                                            <i class="fas fa-rocket me-2"></i>Career Vision & Goals
+                                        </h5>
+                                    </div>
+                                    <div class="card-body p-4">
+                                        <div class="row g-3">
+                                            <div class="col-12">
+                                                <div class="form-floating">
+                                                    <textarea name="goals" class="form-control" id="goals" style="height: 140px" placeholder="Describe your professional development goals and what you hope to achieve in the next 3-6 months through this program..." required></textarea>
+                                                    <label for="goals">Professional Development Goals (3-6 months) *</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-floating">
+                                                    <textarea name="project_interest" class="form-control" id="project_interest" style="height: 140px" placeholder="Share your project ideas, the problems you'd like to solve, or the type of applications you're passionate about building..."></textarea>
+                                                    <label for="project_interest">Dream Projects & Innovation Ideas</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-floating">
+                                                    <textarea name="challenges" class="form-control" id="challenges" style="height: 140px" placeholder="Help us understand any concerns, time constraints, or learning challenges so we can provide the best support..."></textarea>
+                                                    <label for="challenges">Anticipated Challenges & Support Needs</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Submit Section -->
+                                <div class="text-center bg-light p-4 rounded">
+                                    <button type="submit" class="btn btn-primary btn-lg px-5 py-3">
+                                        <i class="fas fa-paper-plane me-2"></i>Submit Questionnaire
+                                    </button>
+                                    <div class="mt-3 text-muted">
+                                        <i class="fas fa-shield-alt me-2"></i>
+                                        <small>Your information is secure and confidential</small>
+                                    </div>
+                                </div>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock main_body %}

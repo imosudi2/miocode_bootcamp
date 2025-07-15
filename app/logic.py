@@ -45,3 +45,27 @@ def load_users():
         print(f"Error loading users: {e}")
         return []
 
+def load_applicants(applicant_email):
+    try:
+        applicants_path = os.path.join(app.root_path, 'data', 'submissions.json')
+        with open(applicants_path, 'r', encoding='utf-8') as f:
+            raw_applicants = json.load(f)
+            
+            # Search for the specific applicant by email
+            for applicant in raw_applicants:
+                if applicant.get("email") == applicant_email:
+                    return {
+                        "email": applicant["email"],
+                        "first_name": applicant["first_name"],
+                        "last_name": applicant["last_name"],
+                        "whatsapp": applicant["whatsapp"],
+                        "start_approval": applicant["start_approval"]
+                    }
+            
+            # Return None if applicant not found
+            return None
+            
+    except Exception as e:
+        print(f"Error loading applicant: {e}")
+        return None
+    

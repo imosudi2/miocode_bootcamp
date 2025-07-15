@@ -12,12 +12,13 @@ from pathlib import Path
 import json
 
 from . import app
-from .logic import load_users, verify_recaptcha
+from .logic import load_applicants, load_users, verify_recaptcha
 
 DATA_PATH = os.path.join(app.root_path, 'data')
 os.makedirs(DATA_PATH, exist_ok=True)
 
 file_path = os.path.join(DATA_PATH, 'submissions.json')
+questionnaire_file_path = os.path.join(DATA_PATH, 'questionnaire.json')
 #sudo chown -R $USER:$USER /home/mosud/Downloads/miocode/miocode_bootcamp/app/data/
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
@@ -76,7 +77,8 @@ def index():
                 "experience": form.get("experience"),
                 "goals": form.get("goals"),
                 "payment_plan": form.get("payment"),
-                "agreed_to_terms": form.get("agreeTerms") == "on"
+                "agreed_to_terms": form.get("agreeTerms") == "on",
+                "start_approval": False
             }
 
             # Basic validation
@@ -271,6 +273,84 @@ def admin_logout():
     flash("You have been logged out.")
     return redirect(url_for('admin_login'))
 
+@app.after_request
+def apply_security_headers(response):
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['X-Frame-Options'] = 'DENY'
+    response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
+    response.headers['Permissions-Policy'] = 'geolocation=()'
+    return response
+
+@app.route('/questionnaire', methods=['GET', 'POST'])
+def questionnaire():
+    applicant_details = None
+    
+    if request.method == 'POST':
+        # Check if this is an email lookup request
+        if 'lookup_email' in request.form:
+            applicant_email = request.form.get('lookup_email')
+            if applicant_email:
+                applicant_details = load_applicants(applicant_email)
+                if not applicant_details:
+                    flash('No applicant found with this email address.', 'danger')
+                elif applicant_details.get("start_approval") != True:
+                    flash('You are not approved to commence the training! Make the initial deposit payment.', 'warning')
+                    applicant_details = None  # Reset to show email form again
+            else:
+                flash('Please enter an email address.', 'warning')
+        
+        # Check if this is a questionnaire submission
+        elif 'full_name' in request.form:
+            # Check if this email/whatsapp already exists in questionnaire submissions
+            email = request.form.get('email')
+            phone = request.form.get('phone')
+            
+            # Load existing questionnaire submissions
+            file_path = questionnaire_file_path  # 'data/questionnaire.json'
+            existing = []
+            if os.path.exists(file_path):
+                try:
+                    with open(file_path, 'r') as f:
+                        existing = json.load(f)
+                except:
+                    existing = []
+            
+            # Check for duplicate email or phone/whatsapp
+            for submission in existing:
+                if (submission.get('email') == email or 
+                    submission.get('phone') == phone):
+                    # Check if the existing submission has start_approval = true
+                    if submission.get('start_approval') == True:
+                        flash('Your information has been submitted earlier, contact the administrator for a request to update earlier submission.', 'info')
+                        return redirect(url_for('questionnaire'))
+            
+            # Extract data for new submission
+            data = {
+                "full_name": request.form.get('full_name'),
+                "email": email,
+                "phone": phone,
+                "program": request.form.get('program'),
+                "os": request.form.get('os'),
+                "python_installed": request.form.get('python_installed'),
+                "cli_familiarity": request.form.get('cli_familiarity'),
+                "tools_used": request.form.getlist('tools_used'),  # Handle multiple checkboxes
+                "specs": request.form.get('specs'),
+                "goals": request.form.get('goals'),
+                "project_interest": request.form.get('project_interest'),
+                "challenges": request.form.get('challenges'),
+                "submitted_at": datetime.utcnow().isoformat(),
+                "start_approval": True
+            }
+
+            # Save to JSON (append)
+            existing.append(data)
+            with open(file_path, 'w') as f:
+                json.dump(existing, f, indent=2)
+
+            flash('Questionnaire submitted successfully!', 'success')
+            return redirect(url_for('questionnaire'))
+
+    return render_template('questionnaire.html', applicant_details=applicant_details)
 
 # 400 - Bad Request
 @app.errorhandler(400)

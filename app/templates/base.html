@@ -75,7 +75,7 @@
     <!-- Logo -->
     <a class="navbar-brand" href="/" aria-label="MioCode Home">
       <img src="{{ url_for('static', filename='images/miocode_logo.png') }}"
-           alt="MioCode Logo" style="max-height: 40px;" />
+           alt="MioCode Logo" style="max-height: 60px;" />
     </a>
 
     <!-- Toggler for mobile -->
@@ -100,25 +100,30 @@
             </a>
           </li>
         {% else %}
-          <!-- Public Nav -->
-          <li class="nav-item">
-            <a class="nav-link" href="#home"><i class="bi bi-house-door-fill"></i> Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#about"><i class="bi bi-info-circle-fill"></i> About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#courses"><i class="bi bi-book-fill"></i> Courses</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#skills"><i class="bi bi-tools"></i> Skills</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#register"><i class="bi bi-person-lines-fill"></i> Register</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact"><i class="bi bi-envelope-fill"></i> Contact</a>
-          </li>
+          
+          {% if request.path == "/questionnaire" %}
+            
+          {% else %}
+            <!-- Public Nav -->
+            <li class="nav-item">
+              <a class="nav-link" href="#home"><i class="bi bi-house-door-fill"></i> Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about"><i class="bi bi-info-circle-fill"></i> About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#courses"><i class="bi bi-book-fill"></i> Courses</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#skills"><i class="bi bi-tools"></i> Skills</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#register"><i class="bi bi-person-lines-fill"></i> Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact"><i class="bi bi-envelope-fill"></i> Contact</a>
+            </li>
+          {% endif %}
         {% endif %}
       </ul>
     </div>
