@@ -392,7 +392,7 @@ def questionnaire():
 
     return render_template('questionnaire.html', applicant_details=applicant_details)
 
-"""
+
 # 400 - Bad Request
 @app.errorhandler(400)
 def bad_request(error):
@@ -465,4 +465,4 @@ def handle_exception(e):
     if isinstance(e, HTTPException):
         return e
     flash("A system error occurred. Please try again or contact support.", "danger")
-    return redirect(url_for('index'))"""
+    return redirect(url_for('index'))
