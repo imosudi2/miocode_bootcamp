@@ -91,16 +91,17 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-floating">
-                                                    <select name="program" class="form-select" id="program" required>
-                                                        <option value="">Select your specialisation</option>
-                                                        <option value="web-dev">Frontend Web Development</option>
+                                                <div class="form-floating mb-3">
+                                                    <select class="form-select" id="program" name="program" required aria-label="Select your specialisation">
+                                                        <option value=""  disabled>Select your specialisation</option>
+                                                        <option value="web-dev" selected>Frontend Web Development</option>
                                                         <option value="mobile-dev">Mobile App Development</option>
                                                         <!--option value="ai-ml">AI & Machine Learning</option>
                                                         <option value="cybersecurity">Cybersecurity Engineering</option-->
                                                         <option value="fullstack">Full Stack Development</option>
                                                     </select>
-                                                    <label for="program">Programme of Interest *</label>
+                                                    <label for="program" class="form-label">Programme of Interest *</label>
+                                                    <div class="invalid-feedback">Please select a valid program</div>
                                                 </div>
                                             </div>
                                         </div>
